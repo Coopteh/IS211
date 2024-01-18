@@ -3,6 +3,8 @@
 используя копию удаленного репозитория IS211
 ```
 git clone https://github.com/Coopteh/IS211
+dir
+cd IS211
 ```
 2. Создадим новую ветку - для вашего компьютера
    командой `git checkout branch-180124-comp<N>`
