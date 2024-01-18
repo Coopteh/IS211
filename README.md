@@ -7,7 +7,7 @@ dir
 cd IS211
 ```
 2. Создадим новую ветку - для вашего компьютера
-   командой `git checkout branch-180124-comp<N>`
+   командой `git -b checkout branch-180124-comp<N>`
 3. Создайте файл с кодом hello.py
 ```
 > notepad hello.py
