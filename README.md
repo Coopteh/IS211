@@ -8,6 +8,7 @@ git clone https://github.com/Coopteh/IS211
    командой `git checkout branch-180124-comp<N>`
 3. Создайте файл с кодом hello.py
 ```
+> notepad hello.py
 print('hello')
 ```
 4. Проверьте `git status` статус файла
