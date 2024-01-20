@@ -27,16 +27,16 @@ git remote add origin https://github.com/Coopteh/IS211.git
 ```
 class Animal:
      def __init__(self, name, count)
-         self.name = name
-         self.count = count
+         self.__name = name
+         self.__count = count
 
-     def show_details(self):
+     def __show_details(self):
          print(f"Животное {self.name} имеет {self.count} ноги")
 ```
 5. Создать экземпляр класса Animal и вызвать метод show_details()
 ```
 obj = Animal('корова', 4)
-obj.show_details()
+obj.__show_details()
 ```
 6. Если программа успешно работает - передайте код на удаленные репозиторий
    - добавьте файл (в Git Bash) в репозиторий
