@@ -16,8 +16,11 @@ cd task-200124
 ```
 git init
 ```
-
-## B.
+5. Закрепите удаленный репозиторий к локальному под именем origin
+```
+git remote add origin https://github.com/Coopteh/IS211.git
+```
+## B. Написание кода
 1. Открыть в pyCharm папку ~/PycharmPython/IS211/oop1
 2. Создать новый файл oop1.py
 3. Создать новый класс Animal
