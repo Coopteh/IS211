@@ -43,5 +43,5 @@ obj.show_details()
      git add .
    - закоммитьте изменения
      git commit -m "Added new file"
-   - git push --set-upstream origin
+   - git push --set-upstream origin <название_вашей_ветки>
    
