@@ -26,7 +26,7 @@ git init
 git remote add origin https://github.com/Coopteh/IS211.git
 ```
 ## B. Написание кода
-1. Открыть в pyCharm папку ~/PycharmPython/IS211/task-220124
+1. Открыть в pyCharm папку ~/PycharmProjects/IS211/task-220124
 2. Создать новый файл animal.py
 3. Создать новый класс Animal
 Создайте класс Animal с инициализатором принимающим параметр name (имя животного)
