@@ -58,6 +58,19 @@ class CarManager:
         self.builder.set_color("красный")
         self.builder.set_price(1000000)
 ```
+класс main.py
+```
+from model import *
+from builder import *
+from manager import *
+
+builder = CarBuilder()
+manager = CarManager(builder)
+
+manager.construct_sports_car()
+sport_car = builder.get_car()
+print(sport_car)
+```
 
 # Задача
 В pyCharm cоздать новый проект Builder (в папке PycharmProjects)  
