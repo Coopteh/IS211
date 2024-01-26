@@ -21,5 +21,5 @@ def factorial(n):
 Напишите проверку на неправильно введенное число (отрицательное):   
 factorial(-1)  
 Должно выпасть исключение ValueError  
-его можно проверить с помощью self.assertRaises(..)   
+его можно проверить с помощью self.assertRaises(ValueError, msg='Factorial is not defined for negative numbers'):
 реализуйте проверку исключения   
