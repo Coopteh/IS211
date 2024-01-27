@@ -25,6 +25,3 @@ print(obj2)
 print(obj3)
 print(obj3 is obj1)
 ```
-
-### Задание
-Измените метод __str__ (строкового представления объекта) класса Singleton на вывод значения cls._instance
