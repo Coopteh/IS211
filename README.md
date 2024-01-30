@@ -10,3 +10,39 @@
 В случае когда некоторая абстракция может иметь несколько реализаций используют наследование. 
 Абстратный класс определяет интерфейс (спецификацию методов для работы с группой классов), 
 а конкретные подклассы (наследники) по-разному его реализуют.
+
+Мост - класс (реализации), который посредством композиции принимает некоторую иерархию классов (свойств).    
+Рассмотрим пример
+```
+Есть реализация иерархии классов цвет
+
+# Абстракция свойства
+class IColor:
+    def apply_color(self):
+        pass
+ 
+class RedColor:
+    def apply_color(self):
+        return "red"
+ 
+class BlueColor:
+    def apply_color(self):
+        return "blue"
+
+# Абстракция реализатора
+class Shape:
+    def __init__(self, color):
+        self.color = color
+ 
+    def apply_color(self):
+        pass
+ 
+# Конкретные реализации
+class Square(Shape):
+    def apply_color(self):
+        return f"Используется {self.color.apply_color()} цвет - для КВАДРАТА"
+ 
+class Circle(Shape):
+    def apply_color(self):
+        return f"Используется {self.color.apply_color()} цвет - для КРУГА"
+```
