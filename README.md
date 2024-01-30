@@ -21,11 +21,11 @@ class IColor:
     def apply_color(self):
         pass
  
-class RedColor:
+class RedColor(IColor):
     def apply_color(self):
         return "red"
  
-class BlueColor:
+class BlueColor(IColor):
     def apply_color(self):
         return "blue"
 
