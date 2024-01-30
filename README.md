@@ -46,3 +46,19 @@ class Circle(Shape):
     def apply_color(self):
         return f"Используется {self.color.apply_color()} цвет - для КРУГА"
 ```
+вызов экземляров классов:
+```
+def main():
+    red_square = Square(RedColor())
+    blue_circle = Circle(BlueColor())
+    print(red_square.apply_color())  
+    print(blue_circle.apply_color())
+ 
+if __name__ == "__main__":
+    main()
+```
+В этом примере:  
+- есть иерархия классов Цвет - абстракция IColor, классы RedColor и BlueColor, представляющие конкретные реализации цветов.
+- есть класс Shape, который представляет абстракцию, классы Square и Circle - конкретные реализации, каждая из которых использует одну из реализаций свойства (color) для применения цвета к форме.
+- класс Shape - мост между своей реализацией класса фигур и использования свойства цвет из другой иерархии классов, посредством композиции.
+  
