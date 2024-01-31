@@ -3,63 +3,78 @@
 структурный паттерн  
 
 **Назначение:**  
-Иногда нужно добавить новые обязанности объекту, а не классу в целом. То есть сделать это динамически, а не статически.
+Иногда нужно добавить новые обязанности объекту, а не классу в целом.   
+То есть сделать это динамически (композицией, через передачу объекта), а не статически.
+Альтернатива наследованию (созданию подклассов)
 
 Рассмотрим пример
 ```
-class Graphic:
-    def draw(self):
+# Интерфейс "Компонент"
+class Coffee:
+    def cost(self):
         pass
 
-# Лист (терминальный узел)
-class Line(Graphic):
-    def draw(self):
-        print("-------")
-
-class Circle(Graphic):
-    def draw(self):
-        print(" O     ")
+    def description(self):
+        pass
 
 
-# Контейнер (узел, содержащий потомков)
-class Picture(Graphic):
-    def __init__(self):
-        self.children = []
+# Конкретная реализация "Компонент"
+class AmericanoCoffee(Coffee):
+    def cost(self):
+        return 100
 
-    def add(self, graphic):
-        self.children.append(graphic)
+    def description(self):
+        return "Кофе Американо"
 
-    def draw(self):
-        print("Draw a picture:")
-        for child in self.children:
-            child.draw()
+
+# Абстрактный декоратор
+class CoffeeDecorator(Coffee):
+    def __init__(self, coffee):
+        self._decorated_coffee = coffee
+
+    def cost(self):
+        return self._decorated_coffee.cost()
+
+    def description(self):
+        return self._decorated_coffee.description()
+
+
+# Декоратор добавки "Молоко"
+class Milk(CoffeeDecorator):
+    def __init__(self, coffee):
+        super().__init__(coffee)
+
+    def cost(self):
+        return self._decorated_coffee.cost() + 15
+
+    def description(self):
+        return self._decorated_coffee.description() + ", с молоком"
 ```
 Использование:
 ```
 def main():
-    line = Line()
-    circle = Circle()
-    picture = Picture()
-    picture.add(line)
-    picture.add(circle)
-    picture.add(line)
-    picture.draw()
+    my_coffee = AmericanoCoffee()
+    print(f"Цена: {my_coffee.cost()}, Описание: {my_coffee.description()}")
+
+    milk_coffee = Milk(my_coffee)
+    print(f"Цена: {milk_coffee.cost()}, Описание: {milk_coffee.description()}")
 
 
 if __name__ == "__main__":
     main()
 ```
 В этом примере:
-- Graphic - абстрактный класс или интерфейс, который представляет как листья (терминальные узлы), так и контейнеры (узлы, содержащие потомков).  
-- Line и Circle - простые листья, т.е. терминальные узлы.  
-- Picture - контейнер, узел, способный хранить другие узлы в виде потомков.  
-- Метод draw в каждом классе вызывает метод draw для всех своих потомков.  
+- Coffee представляет интерфейс для напитков, предоставляющий методы cost и description.  
+- SimpleCoffee представляет конкретную реализацию напитка.  
+- CoffeeDecorator - абстрактный класс декоратора, содержащий ссылку на оборачиваемый объект.  
+- Milk - конкретный декоратор, предоставляющий функциональность добавки молока.  
  
-Такой подход позволяет клиентскому коду работать с отдельными объектами и их контейнерами единообразно, не зная разницы между ними.
+Такой подход позволяет клиентскому коду работать с отдельными объектами и их контейнерами единообразно, не зная разницы между ними.  
   
 ### Задание
-Создайте еще 3 класса:  
-TwoCircle - простой узел, который рисует ' O   O '  
-Noise - простой узел, который рисует '   |   '  
-Mouth - простой узел, который рисует ' ~~~ '  
-добавьте узлы в контейнер picture и вызовите picture.draw()  
+Создайте еще 2 декоратора:  
+Sugar - декоратор, добавляет сахар, увеличивая цену на 5  
+Chocolate - декоратор, добавляет шоколад, увеличивая цену на 20  
+
+Результат:  
+Цена: 140, Кофе Американо, с молоком, с сахаром, с шоколадом
