@@ -1,63 +1,54 @@
-# Паттерн "Декоратор" (Composite) 
-динамически добавляет объекту новые обязанности
+# Паттерн "Фасад" (Facade) 
+предоставляет унифицированный интерфейс вместо набора интерфейсов, который предоставляют подсистемы  
 структурный паттерн  
 
 **Назначение:**  
-Иногда нужно добавить новые обязанности объекту, а не классу в целом.   
-То есть сделать это динамически (композицией, через передачу объекта), а не статически.
-Альтернатива наследованию (созданию подклассов)
+Разбиение на подсистемы облегчает проектирование сложной системы в целом.  
+Общая цель всякого проектирование - свести к минимуму зависимость подсистем друг от друга и обмен информацией между ними.  
+Один из способов решения этой задачи - введение объекта фасад, который предоставляет единый упрощенный интерфейс
+к более сложным системным средствам.
 
 Рассмотрим пример
 ```
-# Интерфейс "Компонент"
-class Coffee:
-    def cost(self):
-        pass
+# Подсистема компонентов
+class CPU:
+    def freeze(self):
+        return "Раскрутим процессор"
 
-    def description(self):
-        pass
+    def jump(self, position):
+        return f"Переход к регистру {position}"
 
-
-# Конкретная реализация "Компонент"
-class AmericanoCoffee(Coffee):
-    def cost(self):
-        return 100
-
-    def description(self):
-        return "Кофе Американо"
+    def execute(self):
+        return "Выполнение"
 
 
-# Абстрактный декоратор
-class CoffeeDecorator(Coffee):
-    def __init__(self, coffee):
-        self._decorated_coffee = coffee
-
-    def cost(self):
-        return self._decorated_coffee.cost()
-
-    def description(self):
-        return self._decorated_coffee.description()
+class Memory:
+    def load(self, position, data):
+        return f"Загружаем из регистра {position} данные: {data}"
 
 
-# Декоратор добавки "Молоко"
-class Milk(CoffeeDecorator):
-    def __init__(self, coffee):
-        super().__init__(coffee)
+class HardDrive:
+    def read(self, lba, size):
+        return f"Читаем с сектора {lba} данные размером {size}"
 
-    def cost(self):
-        return self._decorated_coffee.cost() + 15
 
-    def description(self):
-        return self._decorated_coffee.description() + ", с молоком"
+# Фасад
+class ComputerFacade:
+    def __init__(self):
+        self.cpu = CPU()
+        self.memory = Memory()
+        self.hard_drive = HardDrive()
+
+    def start(self):
+        result = [self.cpu.freeze(), self.memory.load("0x00", "boot"), self.cpu.jump("0x00"), self.cpu.execute()]
+        return '\n'.join(result)
 ```
 Использование:
 ```
+# Использование
 def main():
-    my_coffee = AmericanoCoffee()
-    print(f"Цена: {my_coffee.cost()}, Описание: {my_coffee.description()}")
-
-    milk_coffee = Milk(my_coffee)
-    print(f"Цена: {milk_coffee.cost()}, Описание: {milk_coffee.description()}")
+    computer = ComputerFacade()
+    print(computer.start())
 
 
 if __name__ == "__main__":
