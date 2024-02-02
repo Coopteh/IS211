@@ -1,64 +1,65 @@
-# Паттерн "Фасад" (Facade) 
-предоставляет унифицированный интерфейс вместо набора интерфейсов, который предоставляют подсистемы  
+# Паттерн "Приспособленец" (Flyweight)
+применяет совместное использование для эффективной поддержки множества мелких объектов    
 структурный паттерн  
 
 **Назначение:**  
-Разбиение на подсистемы облегчает проектирование сложной системы в целом.  
-Общая цель всякого проектирование - свести к минимуму зависимость подсистем друг от друга и обмен информацией между ними.  
-Один из способов решения этой задачи - введение объекта фасад, который предоставляет единый упрощенный интерфейс
-к более сложным системным средствам.
+может использоваться для экономии памяти или других ресурсов,   
+предоставляя общие объекты, разделяемые между множеством контекстов,   
+вместо повторного создания одинаковых объектов.  
 
 Рассмотрим пример
 ```
-# Подсистема компонентов
-class CPU:
-    def freeze(self):
-        return "Раскрутим процессор"
+import random
+import string
 
-    def jump(self, position):
-        return f"Переход к регистру {position}"
+# Приспособленец (Flyweight)
+class Robot:
+    def __init__(self, name):
+        self.name = name
+        self.color = ''.join(random.choices(string.ascii_letters, k=4))
+        self.height = random.randint(140, 200)  # в см
+        self.weight = random.randint(50, 100)  # в кг
 
-    def execute(self):
-        return "Выполнение"
-
-
-class Memory:
-    def load(self, position, data):
-        return f"Загружаем из регистра {position} данные: {data}"
+    def display(self):
+        return f"Имя: {self.name}, Цвет: {self.color}, Высота: {self.height}, Вес: {self.weight}"
 
 
-class HardDrive:
-    def read(self, lba, size):
-        return f"Читаем с сектора {lba} данные размером {size}"
+# Приспособленцы фабрики
+class RobotFactory:
+    robots = {}
 
+    def get_robot(self, name):
+        if name not in self.robots:
+            self.robots[name] = Robot(name)
+        return self.robots[name]
 
-# Фасад
-class ComputerFacade:
-    def __init__(self):
-        self.cpu = CPU()
-        self.memory = Memory()
-        self.hard_drive = HardDrive()
-
-    def start(self):
-        result = [self.cpu.freeze(), self.memory.load("0x00", "boot"), self.cpu.jump("0x00"), self.cpu.execute()]
-        return '\n'.join(result)
+    def count_robots(self):
+        return len(self.robots)
 ```
 Использование:
 ```
-# Использование
 def main():
-    computer = ComputerFacade()
-    print(computer.start())
+    robot_factory = RobotFactory()
+    names = ['Robot1', 'Robot2', 'Robot3', 'Robot4', 'Robot5', 'Robot1', 'Robot2']
+
+    for name in names:
+        robot = robot_factory.get_robot(name)
+        print(robot.display())
+
+    print(f"Всего создано уникальных роботов: {robot_factory.count_robots()}")
 
 
 if __name__ == "__main__":
     main()
 ```
-В этом примере:  
-- CPU, Memory и HardDrive - подсистемы, с которыми взаимодействует фасад.  
-- ComputerFacade - фасад, предоставляющий упрощенный интерфейс для взаимодействия с подсистемами.  
- 
-Паттерн "Фасад" позволяет скрыть сложность внутренних систем путем предоставления удобного высокоуровневого интерфейса.
+В этом примере:
+- Robot представляет приспособленца (Flyweight),  
+предоставляющего информацию о роботе, такую как имя, цвет, рост и вес.
+  
+Паттерн "Приспособленец" может использоваться для  
+уменьшения использования памяти путем повторного использования общих объектов.
 
 ### Задание
-Задействуйте в методе start() класса ComputerFacade запуск чтения с жесткого диска (класс HardDrive, метод read)
+на МКС потребовался робот "Fedor"  
+- добавьте его имя в начало и конец списка names  
+- убедитесь, что в обоих случаях (запроса робота) используется один и тот же экземпляр класса (одинаковые рост и вес)
