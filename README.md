@@ -21,7 +21,7 @@ class Worker(IWorker):
 
     def set_next_worker(self, worker):
         self.__next_worker = worker
-        return self
+        return self.__next_worker
 
     def execute(self, command):
         if self.__next_worker is not None:
