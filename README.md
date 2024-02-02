@@ -8,6 +8,8 @@
 
 Рассмотрим пример
 ```
+from typing import Dict
+
 # Общий интерфейс
 class ISite:
     def get_page(self, num: int) -> str:
