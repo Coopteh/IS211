@@ -1,75 +1,87 @@
-# Паттерн "Заместитель" (Proxy)
-используется для управления доступом к другому объекту, другое название - Суррогат  
-структурный паттерн  
-
-**Назначение:**  
-одна и причин для управления доступом к объекту - возможность отложить  
-затраты на создание и инициализацию объекта до момента, когда в нем возникнет фактическая необходимость.
+# Паттерн "Цепочка обязанностей" (Chain of responsibility)
+поведенческий паттерн  
+позволяет избежать привязки отправителя запроса к его получателю,  
+предоставляя возможность обработать запрос нескольким объектам.  
+Связывает объекты получатели в цепочку и передает запрос по цепочке, пока он не будет обработан
 
 Рассмотрим пример
 ```
-from typing import Dict
 
-# Общий интерфейс
-class ISite:
-    def get_page(self, num: int) -> str:
+# Интерфейс
+class IWorker():
+    def set_next_worker(self, worker):
         pass
 
+    def execute(self, command):
+        pass
 
-# Реальный сайт
-class Site(ISite):
-    def get_page(self, num: int) -> str:
-        return "Это страница {}".format(num)
+class Worker(IWorker):
+    def __init__(self):
+        self.__next_worker = None
 
+    def set_next_worker(self, worker):
+        self.__next_worker = worker
+        return self
 
-# Заместитель (Proxy)
-class SiteProxy(ISite):
-    def __init__(self, site: ISite):
-        self.__site = site
-        self.__cache: Dict[int, str] = {}
+    def execute(self, command):
+        if self.__next_worker is not None:
+            return self.__next_worker.execute(command)
+        return ''
 
-    def get_page(self, num: int) -> str:
-        page: str = ''
-        if self.__cache.get(num) is not None:
-            page = self.__cache[num]
-            page = "из кеша: " + page
+class Designer(Worker):
+    def execute(self, command):
+        if command == "проектировать дом":
+            return "Проектировщик выполнил команду: "+command
         else:
-            page = self.__site.get_page(num)
-            self.__cache[num] = page
-        return page
+            return super().execute(command)
+
+class Carpenter(Worker):
+    def execute(self, command):
+        if command == "класть кирпич":
+            return "Плотник выполнил команду: "+command
+        else:
+            return super().execute(command)
+
+class FinishWorker(Worker):
+    def execute(self, command):
+        if command == "клеить обои":
+            return "Обойщик выполнил команду: "+command
+        else:
+            return super().execute(command)
+
+def give_command(worker: IWorker, command: str):
+    result = worker.execute(command)
+    if result == '':
+        print(command + ' - никто не умеет делать')
+    else:
+        print(result)
+
+if __name__=='__main__':
+    designer = Designer()
+    carpenter = Carpenter()
+    finish_worker = FinishWorker()
+
+    designer.set_next_worker(carpenter).set_next_worker(finish_worker)
+
+    give_command(designer, 'спроектировать дом')
+    give_command(designer, 'класть кирпич')
+    give_command(designer, 'клеить обои')
+
+    give_command(designer, 'провести проводку')
 ```
-Использование:
-```
-def main():
-    my_site: ISite = SiteProxy(Site())
 
-    print(my_site.get_page(1))
-    print(my_site.get_page(2))
-    print(my_site.get_page(3))
-
-    print(my_site.get_page(1))
-    print(my_site.get_page(2))
-
-
-if __name__ == "__main__":
-    main()
-```
 В этом примере:
-- ISite - интерфейс, определяющий общие операции для реального сервиса и заместителя.  
-- Site - реальный объект, предоставляющий специфическую функциональность.  
-- SiteProxy - заместитель, обеспечивающий доступ к реальному объекту, контролируя его создание и жизненный цикл.  
+- IWorker - определяет общий интерфейс всех обработчиков
+- Worker - определяет назначение последователя (сохраняя его в поле объекта)
+и передачу выполнения последователю, если он определен
+- Designer, Carpenter, FinishWorker - конкретные обработчики, которые  
+либо обрабатывают запрос, либо передают его следующему обработчику в цепочке  
+через родительский класс Worker
  
-Паттерн "Заместитель" позволяет установить контроль над доступом к другому объекту,  
-прозрачно добавляя функциональность до, после и вместо выполнения запросов к реальному объекту.  
+Паттерн "Цепочка обязанностей" позволяет передавать запросы последовательно по цепочке обработчиков до тех пор, пока запрос не будет обработан.
 
 ### Задание
-- создайте задержку времени выполнения для класса Site - в методе get_page  
-запишите задержку на выполнение в 10 секунд
+- создайте класс директора Manager, который "обрабатывает документы"  
+все команды посылайте через него  
 
-используйте  
-```
-import time
-time.sleep(10)  # Задержка на 10 секунд
-```
-Паттерн "Заместитель" позволяет установить контроль над доступом к другому объекту,  
-прозрачно добавляя функциональность до, после и вместо выполнения запросов к реальному объекту.  
+Убедитесь, что несмотря на наличие директора, цепочка по-прежнему работает))
