@@ -1,5 +1,5 @@
 # Паттерн "Заместитель" (Proxy)
-используется для управления доступом к другому объекту, другое название - Суррогат
+используется для управления доступом к другому объекту, другое название - Суррогат  
 структурный паттерн  
 
 **Назначение:**  
@@ -8,60 +8,64 @@
 
 Рассмотрим пример
 ```
-import random
-import string
-
-# Приспособленец (Flyweight)
-class Robot:
-    def __init__(self, name):
-        self.name = name
-        self.color = ''.join(random.choices(string.ascii_letters, k=4))
-        self.height = random.randint(140, 200)  # в см
-        self.weight = random.randint(50, 100)  # в кг
-
-    def display(self):
-        return f"Имя: {self.name}, Цвет: {self.color}, Высота: {self.height}, Вес: {self.weight}"
+# Общий интерфейс
+class ISite:
+    def get_page(self, num: int) -> str:
+        pass
 
 
-# Приспособленцы фабрики
-class RobotFactory:
-    robots = {}
+# Реальный сайт
+class Site(ISite):
+    def get_page(self, num: int) -> str:
+        return "Это страница {}".format(num)
 
-    def get_robot(self, name):
-        if name not in self.robots:
-            self.robots[name] = Robot(name)
-        return self.robots[name]
 
-    def count_robots(self):
-        return len(self.robots)
+# Заместитель (Proxy)
+class SiteProxy(ISite):
+    def __init__(self, site: ISite):
+        self.__site = site
+        self.__cache: Dict[int, str] = {}
+
+    def get_page(self, num: int) -> str:
+        page: str = ''
+        if self.__cache.get(num) is not None:
+            page = self.__cache[num]
+            page = "из кеша: " + page
+        else:
+            page = self.__site.get_page(num)
+            self.__cache[num] = page
+        return page
 ```
 Использование:
 ```
 def main():
-    robot_factory = RobotFactory()
-    names = ['Robot1', 'Robot2', 'Robot3', 'Robot4', 'Robot5', 'Robot1', 'Robot2']
+    my_site: ISite = SiteProxy(Site())
 
-    for name in names:
-        robot = robot_factory.get_robot(name)
-        print(robot.display())
+    print(my_site.get_page(1))
+    print(my_site.get_page(2))
+    print(my_site.get_page(3))
 
-    print(f"Всего создано уникальных роботов: {robot_factory.count_robots()}")
+    print(my_site.get_page(1))
+    print(my_site.get_page(2))
 
 
 if __name__ == "__main__":
     main()
 ```
 В этом примере:
-- Robot представляет приспособленца (Flyweight),  
-предоставляющего информацию о роботе, такую как имя, цвет, рост и вес.
-  
-Паттерн "Приспособленец" может использоваться для  
-уменьшения использования памяти путем повторного использования общих объектов.
+- ISite - интерфейс, определяющий общие операции для реального сервиса и заместителя.  
+- Site - реальный объект, предоставляющий специфическую функциональность.  
+- SiteProxy - заместитель, обеспечивающий доступ к реальному объекту, контролируя его создание и жизненный цикл.  
+ 
+Паттерн "Заместитель" позволяет установить контроль над доступом к другому объекту,  
+прозрачно добавляя функциональность до, после и вместо выполнения запросов к реальному объекту.  
 
 ### Задание
-на МКС потребовался робот "Fedor"  
-- import time
-
-# Код программы
-
-time.sleep(0.05)  # Задержка на 50 миллисекунд
+поскольку одна из причин создания Суррогата для доступа к реальному объекту являются  
+затраты на его создание и инициализацию, то:
+- создайте для класса Site инициализатор в который запишите задержку на создание в 10 секунд
+используйте
+```
+import time
+time.sleep(10)  # Задержка на 10 секунд
+```
