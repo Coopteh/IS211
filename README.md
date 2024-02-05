@@ -1,87 +1,109 @@
-# Паттерн "Цепочка обязанностей" (Chain of responsibility)
+# Паттерн "Команда" (Command)
 поведенческий паттерн  
-позволяет избежать привязки отправителя запроса к его получателю,  
-предоставляя возможность обработать запрос нескольким объектам.  
-Связывает объекты получатели в цепочку и передает запрос по цепочке, пока он не будет обработан
+позволяет инкапсулировать запрос в объекте на выполнение определенного действия,   
+параметризуя объекты-команды для разных запросов, ставить запросы в очередь, логировать их и отменять.
 
 Рассмотрим пример
 ```
+from abc import ABC, abstractmethod
+from typing import List
 
-# Интерфейс
-class IWorker():
-    def set_next_worker(self, worker):
+class ICommand(ABC):
+    @abstractmethod
+    def execute(self) -> None:
         pass
 
-    def execute(self, command):
-        pass
+class ChiefAssistant:
+    def prepare_pizza_dough(self):
+        print("Ассистент подготавливает тесто для пиццы")
 
-class Worker(IWorker):
+class Stove:
+    def prepare_stove(self):
+        print("Печь разогревается")
+
+    def cooking_pizza(self):
+        print("Пицца готовится в печи")
+
+class ChiefCooker:
+    def add_topping_to_pizza(self):
+        print("Шеф добавляет начинку на пиццу")
+
+class PrepareStoveCommand(ICommand):
+    """Класс команды для разогрева печи"""
+    def __init__(self, executor: Stove):
+        self.__executor = executor
+
+    def execute(self) -> None:
+        self.__executor.prepare_stove()
+
+
+class PrepareDoughCommand(ICommand):
+    """Класс команды для подготовки теста пиццы"""
+    def __init__(self, executor: ChiefAssistant):
+        self.__executor = executor
+
+    def execute(self) -> None:
+        self.__executor.prepare_pizza_dough()
+
+class CookingPizzaCommand(ICommand):
+    """Класс команды для приготовления пиццы в печи"""
+    def __init__(self, executor: Stove):
+        self.__executor = executor
+
+    def execute(self) -> None:
+        self.__executor.cooking_pizza()
+
+class AddToppingCommand(ICommand):
+    """Класс команды для добавления начинки на пиццу"""
+
+    def __init__(self, executor: ChiefCooker):
+        self.__executor = executor
+
+    def execute(self) -> None:
+        self.__executor.add_topping_to_pizza()
+
+class Pizzeria:
+    """Класс агрегации всех команд для приготовления пиццы"""
     def __init__(self):
-        self.__next_worker = None
+        self.history: List[ICommand] = []
 
-    def set_next_worker(self, worker):
-        self.__next_worker = worker
-        return self.__next_worker
+    def addCommand(self, command: ICommand) -> None:
+        self.history.append(command)
 
-    def execute(self, command):
-        if self.__next_worker is not None:
-            return self.__next_worker.execute(command)
-        return ''
-
-class Designer(Worker):
-    def execute(self, command):
-        if command == "проектировать дом":
-            return "Проектировщик выполнил команду: "+command
+    def cook(self) -> None:
+        if not self.history:
+            print("Не задана очередность выполнения команд приготовления пиццы")
         else:
-            return super().execute(command)
+            for command in self.history:
+                command.execute()
+        self.history.clear()
 
-class Carpenter(Worker):
-    def execute(self, command):
-        if command == "класть кирпич":
-            return "Плотник выполнил команду: "+command
-        else:
-            return super().execute(command)
 
-class FinishWorker(Worker):
-    def execute(self, command):
-        if command == "клеить обои":
-            return "Обойщик выполнил команду: "+command
-        else:
-            return super().execute(command)
-
-def give_command(worker: IWorker, command: str):
-    result = worker.execute(command)
-    if result == '':
-        print(command + ' - никто не умеет делать')
-    else:
-        print(result)
-
-if __name__=='__main__':
-    designer = Designer()
-    carpenter = Carpenter()
-    finish_worker = FinishWorker()
-
-    designer.set_next_worker(carpenter).set_next_worker(finish_worker)
-
-    give_command(designer, 'спроектировать дом')
-    give_command(designer, 'класть кирпич')
-    give_command(designer, 'клеить обои')
-
-    give_command(designer, 'провести проводку')
+if __name__ == "__main__":
+    chief = ChiefCooker()
+    assistant = ChiefAssistant()
+    stove = Stove()
+    pizzeria = Pizzeria()
+    # формируем последовательность команд для приготовления пиццы
+    pizzeria.addCommand(PrepareDoughCommand(assistant))
+    pizzeria.addCommand(PrepareStoveCommand(stove))
+    pizzeria.addCommand(AddToppingCommand(chief))
+    pizzeria.addCommand(CookingPizzaCommand(stove))
+    # запускаем процесс приготовления пиццы
+    pizzeria.cook()
 ```
 
 В этом примере:
-- IWorker - определяет общий интерфейс всех обработчиков
-- Worker - определяет назначение последователя (сохраняя его в поле объекта)
-и передачу выполнения последователю, если он определен
-- Designer, Carpenter, FinishWorker - конкретные обработчики, которые  
-либо обрабатывают запрос, либо передают его следующему обработчику в цепочке  
-через родительский класс Worker
+- ICommand - определяет общий интерфейс для всех команд.
+- ChiefAssistant - получатель команды, который фактически выполняет действие.
+- PrepareDoughCommand - конкретная реализация команды для подготовки теста.
+- Pizzeria - класс агрегации всех команд для приготовления пиццы,
+который назначает команду и запускает её выполнение.
  
-Паттерн "Цепочка обязанностей" позволяет передавать запросы последовательно по цепочке обработчиков до тех пор, пока запрос не будет обработан.
+Паттерн "Команда" создает обобщенную систему обработки команд.
 
 ### Задание
-- создайте класс директора Manager, который "обрабатывает документы"  
-все команды посылайте через него  
+- создайте класс Courier, который доставляет пиццу клиенту
+- команду CourierDeliveryCommand реализующую доставку пиццы курьером
+- добавьте новую команду в процесс работы класса Pizzeria
 
-Убедитесь, что несмотря на наличие директора, цепочка по-прежнему работает))
