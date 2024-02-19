@@ -54,7 +54,7 @@ https://www.php.net/manual/ru/function.strrev.php
 Результатом работы функции является применения операции к этим числам.  
 Если передается операция, которая не поддерживается, то функция должна вернуть null:
 ```
-print_r( calculate('+', 3, 10) . "\n"); // 13
-print_r( calculate('-', -8, 6) . "\n"); // -14
-print_r( calculate('$', 0, 9) . "\n");  // null
+print_r( calculate('+', 3, 10) . "\n");     // 13
+print_r( calculate('-', -8, 6) . "\n");     // -14
+print_r( (calculate('$', 0, 9)===null ? "null" : "") . "\n");      // null
 ```
