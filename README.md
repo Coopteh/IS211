@@ -22,8 +22,8 @@ printNumbers(4);
 Реализуйте функцию joinNumbersFromRange(), 
 которая объединяет все числа из диапазона в строку:
 ```
-print_r( joinNumbersFromRange(1, 1) );  // '1'
-print_r( joinNumbersFromRange(2, 3) );  // '23'
-print_r( joinNumbersFromRange(5, 10) ); // '5678910'
+print_r( joinNumbersFromRange(1, 1) . "\n");  // '1'
+print_r( joinNumbersFromRange(2, 3) . "\n");  // '23'
+print_r( joinNumbersFromRange(5, 10) . "\n"); // '5678910'
 ```
 пройтись по всем числам диапазона и использовать конкатенацию для получения результирующей строки.
