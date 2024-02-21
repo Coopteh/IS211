@@ -53,10 +53,10 @@ function isArgumentsForSubstrCorrect($str, $ind, $length)
 Не забывайте, что индексы начинаются с 0, поэтому индекс последнего элемента — это «длина строки минус 1»:
 ```
 $str = 'Sansa Stark';
-isArgumentsForSubstrCorrect($str, -1, 3);  // false
-isArgumentsForSubstrCorrect($str, 4, 100); // false
-isArgumentsForSubstrCorrect($str, 10, 10); // false
-isArgumentsForSubstrCorrect($str, 11, 1);  // false
-isArgumentsForSubstrCorrect($str, 3, 3);   // true
-isArgumentsForSubstrCorrect($str, 0, 5);   // true
+echo isArgumentsForSubstrCorrect($str, -1, 3) . "\n";  // false
+echo isArgumentsForSubstrCorrect($str, 4, 100) . "\n"; // false
+echo isArgumentsForSubstrCorrect($str, 10, 10) . "\n"; // false
+echo isArgumentsForSubstrCorrect($str, 11, 1) . "\n";  // false
+echo isArgumentsForSubstrCorrect($str, 3, 3) . "\n";   // true
+echo isArgumentsForSubstrCorrect($str, 0, 5) . "\n";   // true
 ```
