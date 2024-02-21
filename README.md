@@ -27,3 +27,36 @@ print_r( joinNumbersFromRange(2, 3) . "\n");  // '23'
 print_r( joinNumbersFromRange(5, 10) . "\n"); // '5678910'
 ```
 пройтись по всем числам диапазона и использовать конкатенацию для получения результирующей строки.
+
+## Задача 3
+
+Реализуйте функцию-предикат isArgumentsForSubstrCorrect(), которая принимает три аргумента:
+```
+    Строку
+    Индекс, с которого начинать извлечение
+    Длину извлекаемой подстроки
+```
+```
+function isArgumentsForSubstrCorrect($str, $ind, $length)
+{
+
+}
+```
+Не всегда значения, которые передаются в функцию, бывают корректными. Поэтому функция возвращает false, если хотя бы одно из условий истинно:
+```
+    Отрицательная длина извлекаемой подстроки
+    Отрицательный заданный индекс
+    Заданный индекс выходит за границу всей строки
+    Длина подстроки в сумме с заданным индексом выходит за границу всей строки
+```
+В ином случае функция возвращает true.
+Не забывайте, что индексы начинаются с 0, поэтому индекс последнего элемента — это «длина строки минус 1»:
+```
+$str = 'Sansa Stark';
+isArgumentsForSubstrCorrect($str, -1, 3);  // false
+isArgumentsForSubstrCorrect($str, 4, 100); // false
+isArgumentsForSubstrCorrect($str, 10, 10); // false
+isArgumentsForSubstrCorrect($str, 11, 1);  // false
+isArgumentsForSubstrCorrect($str, 3, 3);   // true
+isArgumentsForSubstrCorrect($str, 0, 5);   // true
+```
