@@ -30,12 +30,12 @@ print_r( getCustomDate(5324352)."\n" );    // 03/03/1970
 
 Примеры использования:
 ```
-print_r( isPalindrome('radar'."\n" ); // true
-print_r( isPalindrome('maam'."\n" ); // true
-print_r( isPalindrome('a'."\n" );     // true
-print_r( isPalindrome('abs'."\n" );   // false
+print_r( isPalindrome('radar')."\n" ); // true
+print_r( isPalindrome('maam')."\n" ); // true
+print_r( isPalindrome('a')."\n" );     // true
+print_r( isPalindrome('abs')."\n" );   // false
 // Функция должна уметь работать с юникодом
-print_r( isPalindrome('шалаш'."\n" ); // true
+print_r( isPalindrome('шалаш')."\n" ); // true
 ```
 Подсказки:
 ```
