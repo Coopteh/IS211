@@ -1,37 +1,22 @@
-# TODO
-## A. Создайте удаленный репозиторий
-1. Перейдите в папку с проектами вашей группы
+## Задача 12.1 Создание объектов, инкапсуляция 
+1. Создайте или откройте в Visual Studio Code папку Документы/Php-IS-211
+2. Создайте новый файл oop1.php
+3. Создайте в нем новый класс Animal
 ```
-cd PycharmProjects/IS211
-```
-2. Создайте новую папку
-```
-mkdir task-200124
-```
-3. Перейдите в новую папку проекта
-```
-cd task-200124
-```
-4. Создайте локальный репозиторий
-```
-git init
-```
-5. Закрепите удаленный репозиторий к локальному под именем origin
-```
-git remote add origin https://github.com/Coopteh/IS211.git
-```
-## B. Написание кода
-1. Открыть в pyCharm папку ~/PycharmPython/IS211/oop1
-2. Создать новый файл oop1.py
-3. Создать новый класс Animal
-```
-class Animal:
-     def __init__(self, name, count)
-         self.name = name
-         self.count = count
+<?php
 
-     def __show_details(self):
-         print(f"Животное {self.name} имеет {self.count} ноги")
+class Animal {
+     public string name;
+     public int count;
+
+     function __construct(string name, int count) {
+          ...
+     }
+
+     function __show_details() {
+         print("Животное {$name} имеет {$count} ноги")
+     }
+}
 ```
 5. Создать экземпляр класса Animal и вызвать метод show_details()
 ```
