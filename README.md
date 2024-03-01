@@ -34,55 +34,38 @@ echo $bicycle->honk();  // Дзынь-дзынь
 echo $bicycle->stop(); // Велосипедист жмет на тормоза
 ```
 
+
 ### Задача 2 Интерфейсы
 1. Создайте новый файл interface.php
 2. Создайте в нем интерфейс TransportInterface, содержащий следующие объявления методов:
    - start(), который описывает начало движения транспортного средства.
    - stop(), который описывает остановку транспортного средства.
 ```
-interface VehicleInterface {
+interface TransportInterface {
     public function start();
     public function stop();
 }
 ```   
-2. Создайте классы, реализующие интерфейс VehicleInterface, например:
+2. Создайте классы, реализующие интерфейс TransportInterface, например:
    - Car, который реализует методы start() и stop().
    - Bicycle, который реализует методы start() и stop().
-   
-3. Дополнительное задание: Добавьте дополнительные методы или свойства в интерфейс и реализующие классы, чтобы продемонстрировать применение интерфейсов для унификации работы с различными типами транспортных средств.
-
-**Пример:**
-
-interface VehicleInterface {
-    public function start();
-    public function stop();
-}
-
+(скопируйте их из предыдущего задания)   
+```
 class Car implements VehicleInterface {
-    public function start() {
-        return "Car started.";
-    }
-
-    public function stop() {
-        return "Car stopped.";
-    }
+    ...
 }
 
 class Bicycle implements VehicleInterface {
-    public function start() {
-        return "Bicycle started pedaling.";
-    }
-
-    public function stop() {
-        return "Bicycle stopped pedaling.";
-    }
+    ...
 }
 
-// Пример использования:
+
 $car = new Car();
-echo $car->start(); // Вывод: Car started.
-echo $car->stop(); // Вывод: Car stopped.
+echo $car->start(); // Автомобиль завелся и тронулся с места
+echo $car->stop(); // Автомобиль остановился
 
 $bicycle = new Bicycle();
-echo $bicycle->start(); // Вывод: Bicycle started pedaling.
-echo $bicycle->stop(); // Вывод: Bicycle stopped pedaling.
+echo $bicycle->start(); // Велосипедист крутит педали
+echo $bicycle->stop(); // Велосипедист жмет на тормоза
+```
+
