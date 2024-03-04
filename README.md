@@ -22,7 +22,9 @@ echo   - для вывода строки
 Нужно создать классы, которые могут быть сериализованы и десериализованы в PHP.  
 
 Они будут использовать встроенные функции PHP для сериализации объектов в строку и восстановления объекта из строки.
-Читайте подробнее (serialize)[https://www.php.net/manual/ru/function.serialize.php], (unserialize)[https://www.php.net/manual/ru/function.unserialize.php]
+Читайте подробнее: 
+[serialize](https://www.php.net/manual/ru/function.serialize.php),    
+[unserialize](https://www.php.net/manual/ru/function.unserialize.php)   
 
 **Шаги**
 
