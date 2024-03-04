@@ -52,3 +52,36 @@ echo "Восстановленный студент: Имя - {$restoredStudent-
 
 Это задание показывает как сохранять и восстанавливать состояние объекта (его поля с данными)
 с использованием встроенных функций PHP сериализации и десериализации объекта (перевода его в строку и обратно).  
+
+### Задание 3 - Работа с файлами
+
+Скопируйте интерфейс работы с файлами
+```
+interface FileStorageInterface {
+     public function saveData($obj);
+     public function loadData():mixed;
+}
+```
+Создайте класс FileStorage реализующий интерфейс FileStorageInterface
+
+- метод saveData($obj)    - принимает объект, сериализует его и сохраняет в файл, заданный константой NAME_FILE
+```
+const NAME_FILE = 'data.txt';
+```
+Шаги:  
+Сериализуем [serialize](https://www.php.net/manual/ru/function.serialize.php),    
+Пишем в файл полученную строку [file_put_contents](https://www.php.net/manual/ru/function.file-put-contents)  
+
+- метод loadData()      - загружает строку данных из файла и десериализует ее в объект
+Шаги:  
+Считываем из файла строку с данными [file_get_contents](https://www.php.net/manual/ru/function.file-get-contents)  
+Десериализуем [unserialize](https://www.php.net/manual/ru/function.unserialize.php),    
+
+Проверочный код
+```
+$store= new FileStorage();
+$store->saveData(new Student("Андрей", 18, "ИС-211"));
+$student = $store->loadData();
+var_dump($student);
+```
+Откройте (в Проводнике) файл `data.txt` и посмотрите что в нем записано?  
