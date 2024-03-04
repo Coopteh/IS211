@@ -8,8 +8,8 @@
 `'Имя, Фамилия, Отчество, Год рождения, Рост, Вес, Номер кредитной карты';`
 
 Используйте функции:  
-(explode)[https://www.php.net/manual/ru/function.explode.php] — Разбивает строку разделителем   
-(implode)[https://www.php.net/manual/ru/function.implode.php] — Объединяет элементы массива в строку  
+[explode](https://www.php.net/manual/ru/function.explode.php) — Разбивает строку разделителем   
+[implode](https://www.php.net/manual/ru/function.implode.php) — Объединяет элементы массива в строку  
 echo   - для вывода строки   
 
 Запустите `Xamp Control` и в нем запустите `Apache` - откройте в браузере `localhost`  
