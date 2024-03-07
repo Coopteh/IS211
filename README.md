@@ -13,24 +13,29 @@ interface FileStorageInterface {
 ```
 3. Создайте внутри `BurgerKrig` папку `services` и в ней файл `FileStorage.php`
 класс FileStorage реализует интерфейс FileStorageInterface
-- метод saveData($obj)    - принимает объект, переводит его сериализует его и сохраняет в файл, заданный константой NAME_FILE
+- метод `saveData($nameFile, $arr)`    - принимает массив (`$arr`) вида:
 ```
-const NAME_FILE = 'data.txt';
+  
 ```
-Шаги:  
-Сериализуем [serialize](https://www.php.net/manual/ru/function.serialize.php),    
-Пишем в файл полученную строку [file_put_contents](https://www.php.net/manual/ru/function.file-put-contents)  
+переводит его в строку формата json - вызовом функции
+[json_encode](https://www.php.net/manual/ru/function.json-encode.php) — Возвращает JSON-представление данных (строку)  
+его и сохраняет в файл, заданный аргументом `$nameFile`  
+```
+для записи в файл используейте
+$handle = fopen($nameFile, "a");
+опция "a" - добавляет данные в конец файла, добавляя их
+```
 
-- метод loadData()      - загружает строку данных из файла и десериализует ее в объект
-Шаги:  
-Считываем из файла строку с данными [file_get_contents](https://www.php.net/manual/ru/function.file-get-contents)  
-Десериализуем [unserialize](https://www.php.net/manual/ru/function.unserialize.php),    
+- метод `loadData($nameFile)` - загружает строки данных из файла (`$nameFile`) и переводит их в массив, вызовом функции
+[json_decode](https://www.php.net/manual/ru/function.json-decode.php) — Декодирует строку JSON   
 
 Проверочный код
 ```
 $store= new FileStorage();
-$store->saveData(new Student("Андрей", 18, "ИС-211"));
-$student = $store->loadData();
+$store->saveData('data.json', $arrData);
+```
+Откройте (в Проводнике, Блокнотом) файл `data.json` и посмотрите что в нем записано?  
+```
+$student = $store->loadData('data.json');
 var_dump($student);
 ```
-Откройте (в Проводнике) файл `data.txt` и посмотрите что в нем записано?  
