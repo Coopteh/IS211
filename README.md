@@ -15,7 +15,11 @@ interface FileStorageInterface {
 класс FileStorage реализует интерфейс FileStorageInterface
 - метод `saveData($nameFile, $arr)`    - принимает массив (`$arr`) вида:
 ```
-  
+[
+['id'=> 1, 'name'=> 'Гамбургер','price'=> 450.00],
+['id'=> 2, 'name'=> 'Чизбургер','price'=> 360.00],
+['id'=> 3, 'name'=> 'Чикенбургер','price'=> 500.00],
+]  
 ```
 переводит его в строку формата json - вызовом функции
 [json_encode](https://www.php.net/manual/ru/function.json-encode.php) — Возвращает JSON-представление данных (строку)  
@@ -36,6 +40,7 @@ $store->saveData('data.json', $arrData);
 ```
 Откройте (в Проводнике, Блокнотом) файл `data.json` и посмотрите что в нем записано?  
 ```
-$student = $store->loadData('data.json');
-var_dump($student);
+$arrData = $store->loadData('data.json');
+var_dump($arrData);
 ```
+Проверьте, что массив считан верно.  
