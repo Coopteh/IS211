@@ -36,6 +36,11 @@ $handle = fopen($nameFile, "a");
 Проверочный код
 ```
 $store= new FileStorage();
+$arrData = [
+  ['id'=> 1, 'name'=> 'Гамбургер','price'=> 450.00],
+  ['id'=> 2, 'name'=> 'Чизбургер','price'=> 360.00],
+  ['id'=> 3, 'name'=> 'Чикенбургер','price'=> 500.00],
+];
 $store->saveData('data.json', $arrData);
 ```
 Откройте (в Проводнике, Блокнотом) файл `data.json` и посмотрите что в нем записано?  
