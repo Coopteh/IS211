@@ -11,12 +11,50 @@
 
 Нужно разработать класс базовой разметки `BaseTemplate`
 
-- Откройте папку с проектом папку BurgerKrig  
-- Создайте внутри папку templates и в ней файл `BaseTemplate.php`   
-- Скопируйте базовую разметку html-страницы (! эммет если файл имеет расширение .html)  
+- Откройте папку с проектом папку `BurgerKrig`  
+- Создайте внутри папку `templates` и в ней файл `BaseTemplate.php`   
+- Скопируйте в файл класс с методом `getBaseTemplate()`, который возвращает базовую разметку html-страницы  
+(внутри тегов `<body>` и `<title>` вставлены `%s` для добавления строки в шаблон и последующего использования функции `sprintf`)
 ```
-внутрь тега `<body>` вставьте `%s` для добавления строки в шаблон
+class BaseTemplate {  
+    public function getBaseTemplate() {
+        $template = <<<END
+        <!DOCTYPE html>
+        <html lang="ru">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>%s</title>
+        </head>
+        <body>
+            %s
+        </body>
+        </html>
+        END;
+        return $template;
+    }
+}
 ```
-- Наследуйте `ProductTemplate.php` от `BaseTemplate.php`
-- Добавьте в метод `getTemplate(arr:array):string` вызов родительского метода `getTemplate():string`  
-- и подстановки разметки в эту строку  
+- Создайте внутри папки `templates` файл `ProductTemplate.php` с классом `ProductTemplate` и наследуйте его от `BaseTemplate.php`
+- Реализуйте метод `getTemplate(arr:array):string`
+```
+Переменная $template получает базовый шаблон страницы от родителя, вызовом функции parent::getBaseTemplate();
+В цикле (foreach) обойдите все элементы переданного простого массива `$arr`,
+который содержит ассоциативные массивы с описаниями товаров сайта
+
+Сформируйте строку со списком товаров
+"<h1>". $item['name'] . ", ". $item['price'] ."</h1>"
+
+Подставьте полученную строку со списком товаром ($str) в базовый шаблон страницы,
+передав еще текст заголовка 'Список товаров',
+используя функцию sprintf()
+
+sprintf($template, 'Список товаров', $str);
+
+Верните полученный результат - шаблон списка товаров
+```
+
+Создайте тестовый файл `test_template.php`
+```
+
+```
