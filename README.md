@@ -36,6 +36,7 @@ class BaseTemplate {
 }
 ```
 - Создайте внутри папки `templates` файл `ProductTemplate.php` с классом `ProductTemplate` и наследуйте его от `BaseTemplate.php`
+- Добавьте в начало файла включение модуля `include ("BaseTemplate.php");`
 - Реализуйте метод `getTemplate(arr:array):string`
 ```
 Переменная $template получает базовый шаблон страницы от родителя, вызовом функции parent::getBaseTemplate();
@@ -56,5 +57,29 @@ sprintf($template, 'Список товаров', $str);
 
 Создайте тестовый файл `test_template.php`
 ```
+<?php
+include ("./templates/ProductsTemplate.php");
+include ("./services/FileStorage.php");
 
+$store = new FileStorage();
+$arrData = $store->loadData('data.json');
+
+$templ = new ProductsTemplate();
+echo $templ->getTemplate($arrData);
 ```
+Если у вас нет файла `data.json`, тогда запустите на выполнение файл `test_storage.php`  
+Запустите файл `test_template.php` - проверьте полученный результат:  
+```
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Список товаров</title>
+</head>
+<body>
+    <h1>Гамбургер, 450</h1><h1>Чизбургер, 360</h1><h1>Чикенбургер, 500</h1>
+</body>
+</html>
+```
+
