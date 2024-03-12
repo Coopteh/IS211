@@ -64,7 +64,7 @@ sprintf($template, 'Список товаров', $str);
 
 Верните полученный результат - шаблон списка товаров
 ```
-
+Функция [sprintf](https://www.php.net/manual/ru/function.sprintf.php)  
 Создайте тестовый файл `test_template.php`
 ```
 <?php
