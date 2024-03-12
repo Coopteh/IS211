@@ -13,10 +13,10 @@
 ```
 В директории пользователя выполните
 git clone https://github.com/Coopteh/BurgerKrig.git
-git remote add origin https://github.com/Coopteh/BurgerKrig.git
-git pull
+cd BurgerKrig
 
-Перейдите в каталог BurgerKrig
+Если проект уже добавлен был ранее
+git pull
 ```
 Нужно разработать класс базовой разметки `BaseTemplate`
 
