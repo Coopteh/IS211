@@ -131,8 +131,8 @@ echo $templ->getTemplate($arrData);
 Найден ресурс для класса Product
 
 в случае
-$obj = Router();
-obj->route('https://mysite.ru/products/12');
+$obj = new Router();
+$obj->route('https://mysite.ru/products/12');
 ```
 и 
 ```
@@ -140,8 +140,8 @@ obj->route('https://mysite.ru/products/12');
 Найден ресурс для класса Product
 
 в случае
-$obj = Router();
-obj->route('https://mysite.ru/products');
+$obj = new Router();
+$obj->route('https://mysite.ru/products');
 ```
 
 ### Задание 4  - Создание заглушек основных классов
@@ -156,8 +156,8 @@ obj->route('https://mysite.ru/products');
 5. Переделайте метод `route` на создание и вызов соответствующих методов, так чтобы тестовый файл `test_url.php`  
 возвращал соответствующие значения на экран в случае вызовов 3 урл
 ```
-$obj = Router();
-echo obj->route('https://mysite.ru/products') ."\n";      // Вызван метод getAll() из класса Product'
-echo obj->route('https://mysite.ru/products/12') ."\n";   // Вызван метод get() из класса Product'
-echo obj->route('https://mysite.ru/orders') ."\n";        // Вызван метод create() из класса Order
+$obj = new Router();
+echo $obj->route('https://mysite.ru/products') ."\n";      // Вызван метод getAll() из класса Product'
+echo $obj->route('https://mysite.ru/products/12') ."\n";   // Вызван метод get() из класса Product'
+echo $obj->route('https://mysite.ru/orders') ."\n";        // Вызван метод create() из класса Order
 ```
