@@ -143,3 +143,21 @@ obj->route('https://mysite.ru/products/12');
 $obj = Router();
 obj->route('https://mysite.ru/products');
 ```
+
+### Задание 4  - Создание заглушек основных классов
+
+1. Создайте каталог `controllers` и в нем классы Product (файл `Product.php`) и Order (файл `Order.php`)   
+2. Реализуйте метод `get(int id): string` для класса Product  
+с возвращаемым значением `return 'Вызван метод get() из класса Product';`
+3. Реализуйте метод `getAll(): string` для класса Product  
+с возвращаемым значением `return 'Вызван метод getAll() из класса Product';`
+4. Реализуйте метод `create(): string` для класса Order  
+с возвращаемым значением `return 'Вызван метод create() из класса Order';`
+5. Переделайте метод `route` на создание и вызов соответствующих методов, так чтобы тестовый файл `test_url.php`  
+возвращал соответствующие значения на экран в случае вызовов 3 урл
+```
+$obj = Router();
+echo obj->route('https://mysite.ru/products') ."\n";      // Вызван метод getAll() из класса Product'
+echo obj->route('https://mysite.ru/products/12') ."\n";   // Вызван метод get() из класса Product'
+echo obj->route('https://mysite.ru/orders') ."\n";        // Вызван метод create() из класса Order
+```
