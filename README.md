@@ -9,6 +9,15 @@
 
 ### Задание 2 - Создание шаблона продукта
 
+Скачайте базовый проект (с уже реализованным классом FileStorage):
+```
+В директории пользователя выполните
+git clone https://github.com/Coopteh/BurgerKrig.git
+git remote add origin https://github.com/Coopteh/BurgerKrig.git
+git pull
+
+Перейдите в каталог BurgerKrig
+```
 Нужно разработать класс базовой разметки `BaseTemplate`
 
 - Откройте папку с проектом папку `BurgerKrig`  
@@ -37,7 +46,8 @@ class BaseTemplate {
 ```
 - Создайте внутри папки `templates` файл `ProductTemplate.php` с классом `ProductTemplate` и наследуйте его от `BaseTemplate.php`
 - Добавьте в начало файла включение модуля `include ("BaseTemplate.php");`
-- Реализуйте метод `getTemplate(arr:array):string`
+- Реализуйте метод `getTemplate(array $arr):string`  
+Шаги реализации:  
 ```
 Переменная $template получает базовый шаблон страницы от родителя, вызовом функции parent::getBaseTemplate();
 В цикле (foreach) обойдите все элементы переданного простого массива `$arr`,
