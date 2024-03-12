@@ -95,7 +95,7 @@ echo $templ->getTemplate($arrData);
 
 ### Задание 3 - Создание роутера API
 
-Создайте папку `routers` и в ней класс `Router` и его метод `route(string $url): string`
+Создайте папку `routers` и в ней файл `Router.php` с классом `Router` и его метод `route(string $url): string`
 ```
     Мы можем получить путь запроса вида /products/{id}
     используя функцию parse_url
