@@ -93,3 +93,7 @@ echo $templ->getTemplate($arrData);
 </html>
 ```
 
+### Задание 3 - Создание роутера API
+
+Создайте класс Router и его метод `route(string $url): string`
+
