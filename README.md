@@ -96,4 +96,50 @@ echo $templ->getTemplate($arrData);
 ### Задание 3 - Создание роутера API
 
 Создайте класс Router и его метод `route(string $url): string`
+```
+    Мы можем получить путь запроса вида /products/{id}
+    используя функцию parse_url
+    $path = parse_url($url, PHP_URL_PATH);
+    
+    а отдельные компоненты (products, id)
+    используя функцию explode
+    $pieces = explode("/", $path);
 
+    При этом:
+    - название ресурса - $pieces[1]
+    - id ресурса - $pieces[2]
+
+    id задан если
+    if (isset($pieces[2]) && !empty($pieces[2])) 
+
+    название ресурса
+    $resource = $pieces[1];
+    switch ($resource) {
+        case "products":
+            echo "Найден ресурс для класса Product";
+            break;
+        case "orders":
+            echo "Найден ресурс для класса Order";
+            break;
+        default:
+            echo "Не удалось установить какой ресурс - Упс..";
+    }
+```
+Реализуйте, чтобы на экран парсилось в виде
+```
+Идентификатор найден = 12
+Найден ресурс для класса Product
+
+в случае
+$obj = Router();
+obj->route('https://mysite.ru/products/12');
+```
+и 
+```
+Не найден идентификатор
+Найден ресурс для класса Product
+
+в случае
+$obj = Router();
+obj->route('https://mysite.ru/products');
+```
