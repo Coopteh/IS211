@@ -31,7 +31,7 @@ cd BurgerKrig
 include("./routers/Router.php");
 
 $obj = new Router();
-echo $obj->route('https://mysite.ru/products') ."\n";      // Вызван метод getAll() из класса Product'
+echo $obj->route('https://mysite.ru/products') ."\n";      // должен быть вызван метод getAll() класса Product'
 ```
 
 На экран должно быть выведено
@@ -93,4 +93,22 @@ if ($product['id'] == $id) { .. }
 Проверочный код - допишите в скрипт `test_product.php`
 ```
 echo $obj->route('https://mysite.ru/products/1') ."\n";      // должен быть вызван метод get(1) класса Product
+echo $obj->route('https://mysite.ru/products/100') ."\n";      // 404
+```
+На экран должно быть выведено
+```
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Страница товара</title>
+</head>
+<body>
+    <h1>Гамбургер, 450</h1>
+</body>
+</html>
+
+Warning: Cannot modify header information - headers already sent by (output started at C:\Users\milevsky\BurgerKrig\BurgerKrig\test_product.php:5) in C:\Users\milevsky\BurgerKrig\BurgerKrig\controllers\Product.php on line 22
+404
 ```
