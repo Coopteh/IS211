@@ -28,6 +28,8 @@ cd BurgerKrig
 
 Проверочный код - создайте скрипт `test_product.php`
 ```
-$obj = new Product();
+include("./routers/Router.php");
+
+$obj = new Router();
 echo $obj->route('https://mysite.ru/products') ."\n";      // Вызван метод getAll() из класса Product'
 ```
