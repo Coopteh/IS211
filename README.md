@@ -83,11 +83,6 @@ if ($product['id'] == $id) { .. }
 Верните значение $template из функции  
 
 Если $id не найден - верните 404 ошибку, отправив заголовок ответа (функция header)  
-    $code = 404;  
-    $text = 'Not Found';  
-    $protocol = (isset($_SERVER['SERVER_PROTOCOL']) ? $_SERVER['SERVER_PROTOCOL'] : 'HTTP/1.0');  
-    header($protocol . ' ' . $code . ' ' . $text);
-
     return '404';
 ```
 Проверочный код - допишите в скрипт `test_product.php`
@@ -108,7 +103,5 @@ echo $obj->route('https://mysite.ru/products/100') ."\n";      // 404
     <h1>Гамбургер, 450</h1>
 </body>
 </html>
-
-Warning: Cannot modify header information - headers already sent by (output started at C:\Users\milevsky\BurgerKrig\BurgerKrig\test_product.php:5) in C:\Users\milevsky\BurgerKrig\BurgerKrig\controllers\Product.php on line 22
 404
 ```
