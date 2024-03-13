@@ -20,7 +20,7 @@ cd BurgerKrig
 присвойте переменной $products полученное значение
 
 2. Загрузите шаблон, передав ему загруженные данные
-создайте объект класса ProductsTemplate и вызовите его метод getTemplate( $products );
+создайте объект класса ProductTemplate и вызовите его метод getTemplate( $products );
 присвойте переменной $template полученное значение
 
 3. Верните значение $template из функции
@@ -77,7 +77,7 @@ if ($product['id'] == $id) { .. }
 
 Если $id найден, тогда:  
 - возвращаете шаблон страницы товара:  
-Создайте объект класса ProductsTemplate и вызовите его метод getPageTemplate( $product );  
+Создайте объект класса ProductTemplate и вызовите его метод getPageTemplate( $product );  
 Присвойте переменной $template полученное значение  
 Верните значение $template из функции  
 
