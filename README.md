@@ -86,5 +86,11 @@ if ($product['id'] == $id) { .. }
     $code = 404;  
     $text = 'Not Found';  
     $protocol = (isset($_SERVER['SERVER_PROTOCOL']) ? $_SERVER['SERVER_PROTOCOL'] : 'HTTP/1.0');  
-    header($protocol . ' ' . $code . ' ' . $text);  
+    header($protocol . ' ' . $code . ' ' . $text);
+
+    return '404';
+```
+Проверочный код - допишите в скрипт `test_product.php`
+```
+echo $obj->route('https://mysite.ru/products/1') ."\n";      // должен быть вызван метод get(1) класса Product
 ```
