@@ -20,7 +20,7 @@ cd BurgerKrig
 присвойте переменной $products полученное значение
 
 2. Загрузите шаблон, передав ему загруженные данные
-создайте объект класса ProductTemplate и вызовите его метод getTemplate( $products );
+создайте объект класса ProductsTemplate и вызовите его метод getTemplate( $products );
 присвойте переменной $template полученное значение
 
 3. Верните значение $template из функции
@@ -32,4 +32,19 @@ include("./routers/Router.php");
 
 $obj = new Router();
 echo $obj->route('https://mysite.ru/products') ."\n";      // Вызван метод getAll() из класса Product'
+```
+
+На экран должно быть выведено
+```
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Список товаров</title>
+</head>
+<body>
+    <h1>Гамбургер, 450</h1><h1>Чизбургер, 360</h1><h1>Чикенбургер, 500</h1>
+</body>
+</html>
 ```
