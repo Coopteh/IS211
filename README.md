@@ -49,6 +49,7 @@ echo $obj->route('https://mysite.ru/products') ."\n";      // Вызван ме�
 </html>
 ```
 <hr>
+
 ### Задание 2 - Product (получение одного товара)
 
 Создайте новый шаблон в ProductsTemplate - метод `getPageTemplate( $product )`  
