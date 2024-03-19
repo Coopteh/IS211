@@ -16,7 +16,7 @@ Bootstrap — свободный набор инструментов для со
 bootstrap.bundle.min.js  -  в новую папку js (создайте папку внутри c:\xamp\htdocs\)
 bootstrap.min.css  -  в новую папку css (создайте папку внутри c:\xamp\htdocs\)
 ```
-5. Подключите таблицу стилей `bootstrap.min.css` в конце секции `head` (тег `<link rel="stylesheet">`)
+5. Подключите таблицу стилей `bootstrap.min.css` в конце секции `head` (тег `<link rel="stylesheet" href="...">`)
 6. Подключите js-скрипты `bootstrap.bundle.min.js` в конце секции `body` (тег `<script src="..."></script>`)
 7. Добавьте блок
 ```
