@@ -27,5 +27,7 @@ bootstrap.min.css  -  в новую папку css (создайте папку 
 </div>
 ```
 8. Внутрь блока добавьте html-код формы из документации (`Docs \ Forms \ Form controls \ Example`)
-9. Запустите `Xampp Control` в нем запустите `Apache` и откройте в браузере `localhost` - форма должна отображаться в стилях Bootstrap!
+9. Подключите плагин эмитов `Bootstrap 5` (вызываются через `b5<Tab>`)  
+10. Запустите `Xampp Control` в нем запустите `Apache`
+11. Откройте в браузере `localhost` - форма должна отображаться в стилях Bootstrap!
 
