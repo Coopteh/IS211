@@ -1,107 +1,31 @@
-### Задание 1 - Разработка класса Product (получение списка товаров)
+### Задание 1 - Подключение Bootstrap
 
-Скачайте базовый проект:
-```
-В директории пользователя выполните
-- если проект уже был добавлен ранее
-git pull
+Bootstrap — свободный набор инструментов для создания сайтов и веб-приложений.  
+Включает в себя HTML- и CSS-шаблоны оформления для типографики, веб-форм, кнопок, меток,  
+блоков навигации и прочих компонентов веб-интерфейса, включая JavaScript-расширения.
 
-- если проекта еще нет
-git clone https://github.com/Coopteh/BurgerKrig.git
+Задание - подключить стили и js-библиотеку Bootstap   
+и добавить пример формы из документации, чтобы проверить работу шаблона
 
-cd BurgerKrig
+Шаги выполнения:
+1. Откройте в Visual Studio Code папку `c:\xamp\htdocs\index.php`
+2. Откройте в браузере ссылку [https://getbootstrap.com/](https://getbootstrap.com/)
+3. Найдите в меню `Docs \ Download \ Source files \ Download sources` - скачайте архив
+4. Найдите в нем папку `dist` и скопируйте файлы:
 ```
-Нужно реализовать метод getAll класса `Product`  
-Откройте в Visual Studio Code папку с проектом `BurgerKrig`    
+bootstrap.bundle.min.js  -  в новую папку js (создайте папку внутри c:\xamp\htdocs\)
+bootstrap.min.css  -  в новую папку css (создайте папку внутри c:\xamp\htdocs\)
 ```
-Реализуйте метод getAll():string
-1. Загрузите данные в $products
-создайте объект класса FileStorage и вызовите его метод loadData('data.json')
-присвойте переменной $products полученное значение
+5. Подключите таблицу стилей `bootstrap.min.css` в конце секции `head` (тег `<link rel="stylesheet">`)
+6. Подключите js-скрипты `bootstrap.bundle.min.js` в конце секции `body` (тег `<script src="..."></script>`)
+7. Добавьте блок
+```
+<div class="container">
+	<div class="row">
 
-2. Загрузите шаблон, передав ему загруженные данные
-создайте объект класса ProductTemplate и вызовите его метод getTemplate( $products );
-присвойте переменной $template полученное значение
+	</div>
+</div>
+```
+8. Внутрь блока добавьте html-код формы из документации (`Docs \ Forms \ Form controls \ Example`)
+9. Запустите `Xampp Control` в нем запустите `Apache` и откройте в браузере `localhost` - форма должна отображаться в стилях Bootstrap!
 
-3. Верните значение $template из функции
-```
-
-Проверочный код - создайте скрипт `test_product.php`
-```
-include("./routers/Router.php");
-
-$obj = new Router();
-echo $obj->route('https://mysite.ru/products') ."\n";      // должен быть вызван метод getAll() класса Product'
-```
-
-На экран должно быть выведено
-```
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Список товаров</title>
-</head>
-<body>
-    <h1>Гамбургер, 450</h1><h1>Чизбургер, 360</h1><h1>Чикенбургер, 500</h1>
-</body>
-</html>
-```
-<hr>
-
-### Задание 2 - Разработка класса Product (получение одного товара)
-
-Создайте новый шаблон в ProductsTemplate - метод `getPageTemplate( $product )`  
-он будет отображать страницу отдельного товара (с другой, отличной разметкой)   
-```
-скопируйте метод  getTemplate(array $arr): string
-и назовите его  getPageTemplate(array $arr): string
-
-код метода
-        $template = parent::getBaseTemplate();
-        $str= "<h1>". $arr['name'] . ", ". $arr['price'] ."</h1>";
-        $resultTemplate = sprintf($template, 'Страница товара', $str);
-        return $resultTemplate;
-```
-Реализуйте метод `get(int $id):string` класса Product   
-```
-Скопируйте содержимое метода getyAll()  
-
-после присвоения $products возвращаемым значением из метода loadData('data.json')  
-добавьте поиск значения $id в массиве $products:  
-
-- используйте цикл foreach - чтобы пройтись по всем записям - отдельным массивам товаров  
-и для каждого элемента проверьте есть ли $id в массиве
-if ($product['id'] == $id) { .. }
-
-Если $id найден, тогда:  
-- возвращаете шаблон страницы товара:  
-Создайте объект класса ProductTemplate и вызовите его метод getPageTemplate( $product );  
-Присвойте переменной $template полученное значение  
-Верните значение $template из функции  
-
-Если цикл завершился, значит $id не был найден
-- верните код 404 ошибки  
-    return '404';
-```
-Проверочный код - допишите в скрипт `test_product.php`
-```
-echo $obj->route('https://mysite.ru/products/1') ."\n";      // должен быть вызван метод get(1) класса Product
-echo $obj->route('https://mysite.ru/products/100') ."\n";      // 404
-```
-На экран должно быть выведено
-```
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Страница товара</title>
-</head>
-<body>
-    <h1>Гамбургер, 450</h1>
-</body>
-</html>
-404
-```
