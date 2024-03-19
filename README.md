@@ -30,12 +30,38 @@ bootstrap.min.css  -  в новую папку css (создайте папку 
 9. Подключите плагин эмитов `Bootstrap 5` (вызываются через `b5<Tab>`)  
 10. Запустите `Xampp Control` в нем запустите `Apache`
 11. Откройте в браузере `localhost` - форма должна отображаться в стилях Bootstrap!
+<hr>
 
-
-### Задание 2 - Добавьте карусель изображений
+### Задание 2 - Добавление карусели изображений
 
 1. На сайте Bootstrap  [https://getbootstrap.com/](https://getbootstrap.com/) зайдите в раздел `Docs \ Components \ Carousel \ Basic examples`
 2. Скопируйте код карусели и вставьте над формой
 3. Найдите 3 картинки бургеров и сохраните их в папку `img` (создайте папку внутри c:\xamp\htdocs\)
 4. Исправьте в html-коде карусели атрибуты `src` тегов `img`, чтобы они указывали на нужные картинки (пример <img src="./img/image1.png">)
-5. Проверьте работу карусели изображений на сайте `localhost`  
+5. Проверьте работу карусели изображений на сайте `localhost`
+<hr>
+
+### Задание 3 - Добавление навигационной панели
+
+1. На сайте Bootstrap  [https://getbootstrap.com/](https://getbootstrap.com/) зайдите в раздел `Docs \ Components \ Navbar`
+2. Скопируйте код навигационной панели без кнопок и форм
+```
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link active" aria-current="page" href="#">Home</a>
+        <a class="nav-link" href="#">Features</a>
+        <a class="nav-link" href="#">Pricing</a>
+        <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+      </div>
+    </div>
+  </div>
+</nav>
+```
+6. Создайте меню с пунктами "Главная", "Каталог", "Сделать заказ"
+7. Измените ссылки "Каталог" на "/products/", а "Сделать заказ" на "/orders/"
