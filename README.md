@@ -58,8 +58,28 @@ if (isset($_POST['id'])) {
 ### Задание 2. - Добавление классов на сайт
 
 1. Скопируйте все файлы (и каталоги) из папки `BurgerKrig` в папку `C:\xampp\htdocs`  
-2. Переименуйте файл `index.html` в `index.php` и добавьте php-вставку
+2. Переименуйте файл `index.html` в `index.php` и добавьте php-вставку в самое начало файла
 ```
+<?php 
+	 include("./routers/Router.php");
+	
+	 $router = new Router();
+	 $url = $_SERVER['REQUEST_URI'];
 
+	 echo $router->route($url);
+
+	 exit;
+?>
 ```
-3. 
+3. Создайте в корне папки `C:\xampp\htdocs` файл `.htaccess`
+```
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ /index.php
+```
+.htaccess — это локальный конфигурационный файл веб-сервера Apache, который позволяет управлять настройками сайта.   
+в нем мы задали условия чтобы все запросы перенаправлялись в один файл с именем index.php
+
+3. Вызовите в браузере `http://localhost/products` - это единственный маршрут реализованный нами в классах и через роутер  
+4. Вам должны быть показаны описания 3 товаров без какой-либо красивой верстки.
