@@ -37,7 +37,14 @@ if (isset($_POST['id'])) {
     }
 
     echo "Товар успешно добавлен в корзину!<br>
-    (Всего ".$_SESSION['basket'][$product_id]['name']." в корзине ".strval($_SESSION['basket'][$product_id]['quantity']) . ")";
+    (Всего ".$_SESSION['basket'][$product_id]['name']." в корзине ".strval($_SESSION['basket'][$product_id]['quantity']) . ")\n";
+
+    echo "Данные сессии
+    <pre>";
+    echo "<pre>";
+    var_dump($_SESSION['basket']);
+    echo "</pre>";
+
 }
 ?>
 ```
