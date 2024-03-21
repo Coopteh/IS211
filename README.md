@@ -20,24 +20,24 @@
 <?php
 session_start();
 
-if (isset($_POST['product_id'])) {
-    $product_id = $_POST['product_id'];
+if (isset($_POST['id'])) {
+    $product_id = $_POST['id'];
 
-    if (!isset($_SESSION['cart'])) {
-        $_SESSION['cart'] = [];
+    if (!isset($_SESSION['basket'])) {
+        $_SESSION['basket'] = [];
     }
 
-    if (isset($_SESSION['cart'][$product_id])) {
-        $_SESSION['cart'][$product_id]['quantity']++;
+    if (isset($_SESSION['basket'][$product_id])) {
+        $_SESSION['basket'][$product_id]['quantity']++;
     } else {
-        $_SESSION['cart'][$product_id] = [
+        $_SESSION['basket'][$product_id] = [
             'name' =>  $_POST['name_product'],
             'quantity' => 1
         ];
     }
 
     echo "Товар успешно добавлен в корзину!<br>
-    (Всего в корзине ".strval($_SESSION['cart'][$product_id]['quantity']) . ")";
+    (Всего ".$_SESSION['basket'][$product_id]['name']." в корзине ".strval($_SESSION['basket'][$product_id]['quantity']) . ")";
 }
 ?>
 ```
