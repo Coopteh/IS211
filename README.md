@@ -93,7 +93,7 @@
 
         $str= sprintf(
             $element_template, 
-            $arr['image'],
+            'https://localhost/'.$arr['image'],
             $arr['name'],
             $arr['description'],
             $arr['weigth'],
