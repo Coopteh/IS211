@@ -31,12 +31,38 @@
             %s
         </div>
 ```
+<hr>
 
 ### Задание 2. - Шаблон Каталога продукции (улучшение)
 
 Необходимо изменить шаблон вывода списков товаров, добавив в него:
 - новые поля, типа картинки, описания, веса
 - новую разметку на bootstrap-стилях
-```
 
+Откройте файл `\templates\ProductTemplate.php` и измените в методе `getTemplate`, в теле цикла foreach значение на:
+```
+            $element_template= <<<END
+            <div class="row mb-5">
+                <div class="col-6">
+                    <img src="%s" class="w-100">
+                </div>
+                <div class="col-6">
+                    <div class="block">
+                        <h2>%s</h2>
+                        <p>%s</p>
+                        <p>%s</p>
+                        <h2>%d ₽</h2>
+                    </div>
+                </div>
+            </div>
+            END;
+
+            $str.= sprintf(
+                    $element_template, 
+                    $item['name'],
+                    $item['name'],
+                    $item['name'],
+                    $item['name'],
+                    $item['price']
+                );
 ```
