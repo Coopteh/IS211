@@ -197,3 +197,14 @@
 
 Во всех скриптах поменяйте include на include_once
 ```
+Теперь можно сократить `index.php` до:
+```
+<?php 
+	 include("./routers/Router.php");
+	
+	 $router = new Router();
+	 $url = $_SERVER['REQUEST_URI'];
+
+	 echo $router->route($url);
+```
+
