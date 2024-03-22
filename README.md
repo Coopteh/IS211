@@ -109,3 +109,11 @@ RewriteRule ^(.*)$ /index.php
         'price' => 355.00],
 ```
 Запустите на выполнение и проверьте результат (массив) в консоли
+
+* если хотите получить удобочитаемый формат (каждая пара ключ-значение на отдельной строке) в data.json  
+используйте опцию JSON_PRETTY_PRINT для функции json_encode
+```
+    public function saveData($nameFile, $arr)
+    {
+        $json = json_encode($arr, JSON_PRETTY_PRINT);
+```
