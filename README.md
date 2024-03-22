@@ -66,3 +66,40 @@
                     $item['price']
                 );
 ```
+<hr>
+
+### Задание 3. - Шаблон отдельной страницы товара
+
+Необходимо изменить шаблон отдельной страницы - которая выдается по урл вида `http://localhost/products/1`  
+Измените метод `getPageTemplate` класса `ProductTemplate`
+```
+        $template = parent::getBaseTemplate();
+
+        $element_template= <<<END
+        <div class="row mb-5">
+            <div class="col-6">
+                <img src="%s" class="w-100">
+            </div>
+            <div class="col-6">
+                <div class="block">
+                    <h2>%s</h2>
+                    <p>%s</p>
+                    <p>%s</p>
+                    <h2>%d ₽</h2>
+                </div>
+            </div>
+        </div>
+        END;
+
+        $str.= sprintf(
+            $element_template, 
+            $arr['image'],
+            $arr['name'],
+            $arr['description'],
+            $arr['weigth'],
+            $arr['price']
+        );      
+
+        $resultTemplate =  sprintf($template, 'Страница товара', $str);
+        return $resultTemplate;
+```
