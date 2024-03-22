@@ -103,3 +103,39 @@
         $resultTemplate =  sprintf($template, 'Страница товара', $str);
         return $resultTemplate;
 ```
+<hr>
+
+### Задание 4. - Классы Главной страницы
+
+Необходимо создать класс Главной страницы (Home) на который роутер будет направлять по-умолчанию.
+Также понадобятся отдельный шаблон главной страницы (HomeTemplate), ведь на главной у нас есть карусель с картинками и прочая информация.
+
+Класс контроллера `Home`
+1. Создайте файл `\controllers\Home.php`
+2. Внутри опишите класс `Home` с единственным методом get, который вызывает шаблон и возвращает его в качестве результата
+```
+    public function get(): string 
+    {
+        $objTemplate = new HomeTemplate();
+        $template = $objTemplate->getHomeTemplate();
+        return $template;
+    }
+```
+
+Класс шаблона главной страницы `HomeTemplate`
+1. Создайте файл `\templates\HomeTemplate.php`
+2. Внутри опишите класс `class HomeTemplate extends BaseTemplate` с единственным методом getHomeTemplate
+```
+    
+```
+
+Изменения в роутере - главная страница - маршрут по-умолчанию.
+Откройте класс `Router`, метод `route(string $url):string`, внутри свича (switch-case) измените опцию `default:`
+```
+            default:
+                $home = new Home();
+                $html_result = $home->get();
+                break;
+```
+- вызываем контроллер и его метод `get` для получения заполненного шаблона
+
