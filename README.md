@@ -126,7 +126,56 @@
 1. Создайте файл `\templates\HomeTemplate.php`
 2. Внутри опишите класс `class HomeTemplate extends BaseTemplate` с единственным методом getHomeTemplate
 ```
+    public function getHomeTemplate(): string 
+    {
+        $template = parent::getBaseTemplate();
+        $str = <<<END
+        <div class="h-50 w-50 mx-auto">
+        <div id="carouselExample" class="carousel slide">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="./img/image1.jpg" class="d-block w-100 h-100" alt="1">
+            </div>
+            <div class="carousel-item">
+              <img src="./img/image2.jpeg" class="d-block w-100 h-100" alt="3">
+            </div>
+            <div class="carousel-item">
+              <img src="./img/image3.jpg" class="d-block w-100 h-100" alt="2">
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+        </div>
     
+    
+        <div class="row mt-5">
+            <p>
+                Приглашаем в наше онлайн-кафе "БУРГЕР КРИГ"!
+            </p>
+            <p>
+                Листайте каталог и добавляйте товар в корзину, нажимая кнопку "Купить".
+                Нажмите "Сделать заказ", чтобы окончательно оформить заказ:
+            </p>
+            <div class="ml-10">
+                <ul>
+                     <li>узнать итоговую сумму заказа</li>
+                    <li>ввести данные для доставки</li>
+                    <li>подтвердить заказ</li>
+                </ul>
+            </div>
+        </div>   
+        <script src="./js/bootstrap.bundle.min.js" type="text/javascript"></script>
+        END;
+        $resultTemplate =  sprintf($template, 'Главная страница', $str);
+        return $resultTemplate;
+    }
 ```
 
 Изменения в роутере - главная страница - маршрут по-умолчанию.
@@ -139,3 +188,12 @@
 ```
 - вызываем контроллер и его метод `get` для получения заполненного шаблона
 
+Дополнительно:
+```
+в Basetemplate - измените ссылки в блоке nav на
+                    <a class="nav-link active" aria-current="page" href="/">Главная</a>
+                    <a class="nav-link" href="/products">Каталог</a>
+                    <a class="nav-link" href="/orders">Сделать заказ</a>
+
+Во всех скриптах поменяйте include на include_once
+```
