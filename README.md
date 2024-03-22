@@ -59,10 +59,10 @@
 
             $str.= sprintf(
                     $element_template, 
+                    $item['image'],
                     $item['name'],
-                    $item['name'],
-                    $item['name'],
-                    $item['name'],
+                    $item['description'],
+                    $item['weigth'],
                     $item['price']
                 );
 ```
