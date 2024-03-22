@@ -8,7 +8,7 @@
 Откройте файл `templates\BaseTemplate.php` и измените возвращаемое методом `getBaseTemplate()` значение переменной `$template`
 - добавьте в секцию head
 ```
-            <link rel="stylesheet" href="'https://localhost/css/bootstrap.min.css">
+            <link rel="stylesheet" href="https://localhost/./css/bootstrap.min.css">
 ```
 - добавьте в секцию body (заменив содержимое в нем)
 ```
