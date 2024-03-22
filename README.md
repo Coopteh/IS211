@@ -8,7 +8,7 @@
 Откройте файл `templates\BaseTemplate.php` и измените возвращаемое методом `getBaseTemplate()` значение переменной `$template`
 - добавьте в секцию head
 ```
-            <link rel="stylesheet" href="./css/bootstrap.min.css">
+            <link rel="stylesheet" href="'https://localhost/css/bootstrap.min.css">
 ```
 - добавьте в секцию body (заменив содержимое в нем)
 ```
@@ -59,7 +59,7 @@
 
             $str.= sprintf(
                     $element_template, 
-                    $item['image'],
+                    'https://localhost/'.$item['image'],
                     $item['name'],
                     $item['description'],
                     $item['weigth'],
@@ -91,7 +91,7 @@
         </div>
         END;
 
-        $str.= sprintf(
+        $str= sprintf(
             $element_template, 
             $arr['image'],
             $arr['name'],
