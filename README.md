@@ -215,3 +215,5 @@
 
 Подсказка: используйте html-разметку, заданную в переменной `$element_template`  
 для методов `getTemplate` и `getPageTemplate` класса `ProductTemplate`
+
+Для скрытого инпута добавьте `value="%s"` и в `sprintf` добавьте последним `$item['id']`
