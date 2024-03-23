@@ -42,4 +42,9 @@
     }
 ```
 3. Создайте класс `OrderTemplate` в папке `templates`
-4. Перенесите разметку из файла `order.html`
+4. Создайте метод `getTemplate(string $str_list): string`
+```
+        $template = parent::getBaseTemplate();
+        $resultTemplate = sprintf($template, 'Создать заказ', $str_list);
+        return $resultTemplate;
+```
