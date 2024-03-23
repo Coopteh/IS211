@@ -21,7 +21,7 @@
                 $sum = $price * $quantity;
                 $all_sum += $sum;
                 $str_list .= <<<LINE
-                <div class="row mb-5">
+                <div class="row">
                     <div class="col-6">
                     {$name}
                     </div>
@@ -31,6 +31,7 @@
                     <div class="col-2">
                     {$sum}
                     </div>
+                </div>
                 LINE;
             }
         }
