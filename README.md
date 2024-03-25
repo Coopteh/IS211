@@ -2,10 +2,19 @@
 
 1. Создайте класс `Basket` в папке `controllers` и добавьте 2 метода `add` и `clear`
 2. Добавьте код из файла `add.php` в метод `add` класса `Basket`
-3. Добавьте код из файла `clear.php` в метод `clear` класса `Basket`
-4. В коде разметки `ProductTemplate` измените `action` для форм на `action="/basket"`, а метод на `method="POST"`
-5. В коде разметки `Order` измените `action` для форм на `action="/basket"`, а метод на `method="DELETE"`
-6. Добавьте в класс маршрутизации `Router` определение http-метода (перед switch)
+```
+удалите все echo
+добавьте возвращаемое значение
+return "Товар успешно добавлен в корзину!";
+```
+4. Добавьте код из файла `clear.php` в метод `clear` класса `Basket`
+```
+добавьте возвращаемое значение
+return "";
+```
+6. В коде разметки `ProductTemplate` измените `action` для форм на `action="/basket"`, а метод на `method="POST"`
+7. В коде разметки `Order` измените `action` для форм на `action="/basket"`, а метод на `method="DELETE"`
+8. Добавьте в класс маршрутизации `Router` определение http-метода (перед switch)
 ```
       // метод GET, POST, DELETE
     	$method = $_SERVER['REQUEST_METHOD'];
