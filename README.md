@@ -35,3 +35,29 @@ return "";
                     $html_result = $basket->clear();
                 break;   
 ```
+
+### Задание 1. - Добавление сообщения "Товар добавлен"
+
+После нажатия на кнопку "Добавить в корзину" необходимо сделать всплывающее окно  
+с сообщением об успешном добавлении товара в корзину.
+
+1. В методе `add` класса `Basket` добавьте в конце добавление новой сессионной переменной $_SESSION['flash']
+и переадресацию обратно - на страницу Каталога 
+```
+            $_SESSION['flash'] = "Товар успешно добавлен в корзину!";
+            header('Location: /products');
+            return "";
+```
+3. В методе `getTemplate` класса `ProductTemplate` добавьте после `$str= '';`
+```
+        // Добавим flash сообщение
+        session_start();
+        if (isset($_SESSION['flash'])) {
+            $str .= <<<END
+                <div class="alert alert-success" role="alert">
+                    {$_SESSION['flash']}
+                </div>
+            END;
+            unset($_SESSION['flash']);
+        }
+```
