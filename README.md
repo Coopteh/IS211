@@ -55,8 +55,10 @@ return "";
         session_start();
         if (isset($_SESSION['flash'])) {
             $str .= <<<END
-                <div class="alert alert-success" role="alert">
-                    {$_SESSION['flash']}
+                <div id="liveAlertBtn" class="alert alert-success alert-dismissible" role="alert">
+                    <div>{$_SESSION['flash']}</div>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"
+                    onclick="this.parentNode.style.display='none';"></button>
                 </div>
             END;
             unset($_SESSION['flash']);
