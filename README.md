@@ -111,4 +111,9 @@ return "";
 
 ### Задание 5. - Запись заказа в файл
 
-Измените метод `create` класса `Order`, чтобы переданные данные в массиве $_POST записывались в файл
+Измените метод `create` класса `Order`, чтобы переданные данные в массиве $_POST записывались в файл `orders.json`
+используйте `FileStorage` и его метод `saveData`
+```
+$objStorage = new FileStorage();
+$objStorage->saveData('orders.json', $arr);
+```
