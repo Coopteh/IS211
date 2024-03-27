@@ -104,6 +104,7 @@ return "";
 - Телефон покупателя (input) c label "Телефон:"
 - Кнопка (`submit`) "Создать заказ"
 
-Подсказка* - элементы формы лучше взять с сайта bootstrap [https://getbootstrap.com/](https://getbootstrap.com/)  
+Подсказка* - элементы формы лучше взять с сайта bootstrap [https://getbootstrap.com/](https://getbootstrap.com/)   
+маршрут `Docs \ Forms \ Form controls`
 
 Настройте роутер на получение данных и вызов метода `create` объекта `Order`
