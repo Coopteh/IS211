@@ -111,9 +111,52 @@ return "";
 
 ### Задание 5. - Запись заказа в файл
 
-Измените метод `create` класса `Order`, чтобы переданные данные в массиве $_POST записывались в файл `orders.json`
-используйте `FileStorage` и его метод `saveData`
+Измените метод `create` класса `Order`, чтобы переданные данные в массиве `$_POST` + время создания заказа (`created_at`)  
+записывались в файл `orders.json` - используйте `FileStorage` и его метод `saveData`  
+Также добавьте список продуктов к заказу из массива сессии (`$_SESSION`)  
+Итого:
 ```
-$objStorage = new FileStorage();
-$objStorage->saveData('orders.json', $arr);
+        $objStorage = new FileStorage();
+
+        $arr = [];
+        $arr['fio'] = urldecode( $_POST['fio'] );
+        $arr['address'] = urldecode( $_POST['address'] );
+        $arr['phone'] = $_POST['phone'];
+        $arr['created_at'] = date("d-m-Y H:i:s");
+
+        $products = $objStorage->loadData('data.json');
+        session_start();
+        $all_sum = 0;
+        $items = [];
+        foreach ($products as $product) {
+            $id = $product['id'];
+            if (array_key_exists($id, $_SESSION['basket'])) {
+                $item = [];
+                $item['name'] = urldecode( $product['name'] );
+                $item['quantity'] = $_SESSION['basket'][$id]['quantity'];                
+                $item['price'] = $product['price'];
+                $item['sum'] = $item['price'] * $item['quantity'];
+                $all_sum += $item['sum'];
+                array_push($items, $item);
+            }
+        }
+        $arr['all_sum'] = $all_sum;
+        $arr['products'] = $items;
+
+        $objStorage->saveData('orders.json', $arr);
+        return 'Вызван метод create() из класса Order';
+```
+также следует изменить метод `saveData` класса  `FileStorage`  
+```
+        if (filesize($nameFile) > 0) {
+            $data = $this->loadData($nameFile);
+        } else
+            $data = [];
+        array_push($data, $arr);
+
+        $json = json_encode($data, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
+        
+        $handle = fopen($nameFile, "w");
+        fwrite($handle, $json);
+        fclose($handle);
 ```
