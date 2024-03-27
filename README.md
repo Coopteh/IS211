@@ -13,7 +13,7 @@ return "Товар успешно добавлен в корзину!";
 return "";
 ```
 6. В коде разметки `ProductTemplate` измените `action` для форм на `action="/basket"`, а метод на `method="POST"`
-7. В коде разметки `Order` измените `action` для форм на `action="/basket_add"`, а метод на `method="POST"`
+7. В коде разметки `Order` измените `action` для форм на `action="/basket_clear"`, а метод на `method="POST"`
 8. Добавьте в класс маршрутизации `Router` определение http-метода (перед switch)
 ```
       // метод GET, POST, DELETE
@@ -22,14 +22,14 @@ return "";
 7. Добавьте в класс маршрутизации `Router` обработку урл `/basket` и `/basket_add` для метода `POST`
 ```
 /basket, POST - ведет к созданию класса Basket и вызову его метода add()
-/basket_add, POST - ведет к созданию класса Basket и вызову его метода clear()
+/basket_clear, POST - ведет к созданию класса Basket и вызову его метода clear()
 
             case "basket":
                 $basket = new Basket();
                 if ($method == "POST")
                     $html_result = $basket->add();
                 break;   
-            case "basket_add":
+            case "basket_clear":
                 $basket = new Basket();
                 if ($method == "POST")
                     $html_result = $basket->clear();
