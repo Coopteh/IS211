@@ -62,4 +62,41 @@ https://debugmail.io/
 Для этого используйте PHPMailer. 
 Обязательно оборачивайте вызовы методов PHPMailer в try .. catch. 
 Если возникла какая-либо ошибка при отправке сообщения — выведите соответствующее флеш-предупреждение в красном блоке (error).
+```
+    $mail = new PHPMailer();
+    if (isset($_POST['email']) && !empty($_POST['email'])) {
+        try {
+            //$mail->SMTPDebug = 4;
+            $mail->CharSet = 'UTF-8';
+            $mail->setFrom('PavelAlexandrov86@yandex.ru');
+            $mail->addAddress('PavelAlexandrov86@yandex.ru');
+            $mail->isHTML(true);
+            $mail->isSMTP();                                            //Send using SMTP
+            $mail->Host       = 'smtp.yandex.ru';                     //Set the SMTP server to send through
+            $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+            $mail->Username   = 'PavelAlexandrov86@yandex.ru';                     //SMTP username
+            $mail->Password   = 'PavelAlexandrov1234';
+            $mail->Subject = 'Заявка с сайта: Telegraph.com';
+            $mail->Port       = 465;
+            $mail->SMTPSecure = 'ssl';            //Enable implicit TLS encryption
+            $mail->Body = 'Информационное сообщение c сайта Telegraph.com <br><br>
+            ------------------------------------------<br>
+            <br>
+            Вам было отправлено сообщение через форму обратной связи<br>
+            <br>
+            Текст: ' . $_POST['text'] . '<br>
+            <br>
+            Сообщение сгенерировано автоматически.';
 
+            if ($mail->send()) {
+                $myError = '<div class="mail success">
+                Ваше письмо успешно отправленно!
+                 </div>';
+            } else {
+                throw new Exception('<div class="mail error">Что-то пошло не так!<br><br>Повторите попытку.</div>');
+            }
+        } catch (Exception $error) {
+            $myError =  $error->getMessage();
+        }
+    }
+```
