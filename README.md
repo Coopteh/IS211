@@ -1,13 +1,30 @@
 ### Задание 1. - Пространство имен
 
-1. Необходимо добавить в каждый файл с исходным кодом пространство имен, типа:  
-`namespace Controllers\Home;`
-2. Добавьте использование других пространств имен, а именно
+1. Переименуйте все каталоги, содержащие исходный код в названия с первой заглавной буквой  
+```
+Controllers, Services, Templates, Interfaces, Routers
+```
+2. Необходимо добавить в каждый файл с исходным кодом пространство имен, типа:  
+`namespace Controllers;`
+Именование namespace-ов следует давать по названиям каталога (иначе будет ошибка), то есть
+```
+namespace Controllers;      // для каталога Controllers
+namespace Routers;          // для каталога Routers
+```
+
+3. Добавьте использование других пространств имен, а именно:
 вместо `include_once("./templates/HomeTemplate.php");`
 используйте импортирование пространства имен `use Templates\HomeTemplate;`
-3. Избавьтесь от всех `require_once, include_once` - подключение классов будем делать через автозагрузчик
-4. Создайте автозагрузчик классов - в корне сайта файл `autoload.php`
-5. Используйте функцию автозагрузки [spl-autoload-register](https://www.php.net/manual/en/function.spl-autoload-register.php)  
+```
+use Templates\HomeTemplate;      // это соответствует файловой структуре - в директории Templates лежит файл HomeTemplate.php c нужным нам классом HomeTemplate
+```
+5. Избавьтесь от всех `require_once, include_once` - подключение классов будем делать через автозагрузчик
+<hr>
+
+### Задание 2. - Автозагрузчик классов  
+
+1. Создайте автозагрузчик классов в корне сайта - файл `autoload.php`
+2. Используйте функцию автозагрузки [spl-autoload-register](https://www.php.net/manual/en/function.spl-autoload-register.php)  
 Функция регистрирует пользовательскую функцию в очереди __autoload SPL-библиотеки ядра PHP.
 Напишите в файл `autoload.php` следующее содержимое:
 ```
@@ -22,5 +39,16 @@ function autoloadClasses($className)
 
 spl_autoload_register("autoloadClasses");
 ```
-6. Подключите файл `autoload.php` в `index.php` через `require_once(./autoload.php)`
-7. Проверьте будет ли работать сайт
+3. Подключите файл `autoload.php` в `index.php` через `require_once(./autoload.php)`
+4. Проверьте будет ли работать сайт (он должен работать без изменений)
+
+### Задание 3. - Менеджер загрузки Composer
+
+1. Установите менеджер загрузки готовых компонентов Composer в свой проект
+```
+Наберите в папке проекта, в адресной строке:
+cmd
+Затем вызовите инициализацию:
+composer init
+```
+2. 
