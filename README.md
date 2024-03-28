@@ -23,3 +23,4 @@ function autoloadClasses($className)
 spl_autoload_register("autoloadClasses");
 ```
 6. Подключите файл `autoload.php` в `index.php` через `require_once(./autoload.php)`
+7. Проверьте будет ли работать сайт
