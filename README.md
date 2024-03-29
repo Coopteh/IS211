@@ -31,10 +31,11 @@ use Templates\HomeTemplate;      // это соответствует файло
 <?php
 function autoloadClasses($className)
 {
-      $class = str_replace('\\', DIRECTORY_SEPARATOR, $className);
-      $path = __DIR__ . "/{$class}.php";
-      if (is_readable($path))
-          require_once $path;
+    $class = str_replace('\\', '/', $className);
+    $path = "./". $class.".php";
+    if (file_exists($path)) {
+        require_once($path);
+    }
 }
 
 spl_autoload_register("autoloadClasses");
