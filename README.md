@@ -40,7 +40,7 @@ function autoloadClasses($className)
 
 spl_autoload_register("autoloadClasses");
 ```
-3. Подключите файл `autoload.php` в `index.php` через `require_once(./autoload.php)`
+3. Подключите файл `autoload.php` в `index.php` через `require_once("./autoload.php");`
 4. Проверьте будет ли работать сайт (он должен работать без изменений)
 
 ### Задание 3. - Менеджер загрузки Composer
