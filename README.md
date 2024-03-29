@@ -167,8 +167,8 @@ use PHPMailer\PHPMailer\Exception;
 <label for="email">Email:</label>
 <input type="email" id="email" class="form-control" name="email" required>
 ```
-сразу после поля ввода телефона
-7. Добавьте вызов метода отправки емайл (класс `Order`, метод `create`) сразу после сохранения данных  
+сразу после поля ввода телефона  
+7. Добавьте вызов метода отправки емайл (класс `Order`, метод `create`) сразу после сохранения данных   
 ```
 $objStorage->saveData('orders.json', $arr);
 // отправка емайл
