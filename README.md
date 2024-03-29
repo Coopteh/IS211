@@ -52,7 +52,31 @@ cmd
 Затем вызовите инициализацию:
 composer init
 ```
-Подключите автозагрузчик composer к проекту. Для этого в файл autoload.php (в корне проекта) добавьте подключение файла vendor/autoload.php — это позволит автоматически загружать классы зависимостей composer.
+Подключите автозагрузчик composer к проекту.  
+Для этого в файл index.php (в корне проекта) добавьте подключение файла `vendor/autoload.php` (вместо `require_once("./autoload.php");`)
+```
+require_once("./vendor/autoload.php");
+```
+— это позволит автоматически загружать классы зависимостей composer
+Измените файл настроек менеджера зависимостей `composer.json`
+```
+{
+    "name": "burger/krig",
+    "autoload": {
+        "psr-4": {
+            "": ""
+        }
+    },
+    "authors": [
+        {
+            "name": "Coop Teh",
+            "email": "v.milevskiy@coopteh.ru"
+        }
+    ],
+    "require": {}
+}
+```
+Проверьте работает ли проект
 
 ### Задание 4. - Отправка емайл
 
