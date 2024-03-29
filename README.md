@@ -83,7 +83,7 @@ require_once("./vendor/autoload.php");
 
 Лучшим решением будет собрать весь исходный код проекта в отдельную папку `BurgerKrig`  
 1. Создайте папку `BurgerKrig` внутри папки `c:\xampp\htdocs` скопируйте в нее все директории с кодом:
-Controller,Templates,Routers,Interfaces
+Controller, Templates, Routers, Interfaces, Services, css, img, js
 2. Отредактируйте `composer.json` изменив 5-ю строчку на `"": "BurgerKrig/"`
 ```
 {
