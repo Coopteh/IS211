@@ -3,7 +3,7 @@
 1. Переименуйте все каталоги, содержащие исходный код в названия с первой заглавной буквой  
 ```
 Controllers, Services, Templates, Interfaces, Routers
-```
+```  
 2. Необходимо добавить в каждый файл с исходным кодом пространство имен, типа:  
 `namespace Controllers;`
 Именование namespace-ов следует давать по названиям каталога (иначе будет ошибка), то есть
@@ -11,7 +11,6 @@ Controllers, Services, Templates, Interfaces, Routers
 namespace Controllers;      // для каталога Controllers
 namespace Routers;          // для каталога Routers
 ```
-
 3. Добавьте использование других пространств имен, а именно:
 вместо `include_once("./templates/HomeTemplate.php");`
 используйте импортирование пространства имен `use Templates\HomeTemplate;`
@@ -110,15 +109,15 @@ Controller, Templates, Routers, Interfaces, Services, css, img, js
 ```
 composer require phpmailer/phpmailer
 ```
-Вы установили компонент PHPMailer, проверьте он должен появиться в папку `vendor`
-2. Откройте временный ящик, например на `https://temp-mail.org/`
-для получения почты на этот временный email
-3. В классе `Order` укажите импортирование пространств имен используемых классов PHPMailer
+Вы установили компонент PHPMailer, проверьте он должен появиться в папку `vendor`  
+2. Откройте временный ящик, например на `https://temp-mail.org/`  
+для получения почты на этот временный email  
+3. В классе `Order` укажите импортирование пространств имен используемых классов PHPMailer  
 ```
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
-```
-4. В классе `Order` создайте новый метод `sendMail($email)`
+```  
+4. В классе `Order` создайте новый метод `sendMail($email)`  
 ```
     public function sendMail($email) {
         $mail = new PHPMailer();
