@@ -102,8 +102,9 @@ Controller, Templates, Routers, Interfaces, Services, css, img, js
 
 https://debugmail.io/
 
-В командной строке ОС перейдите в корневую папку проекта и с помощью команды `composer require phpmailer/phpmailer` установите библиотеку PHPMailer. 
-После сохранения заказа, и если пользователь ввёл email, отправьте копию текста на его email. 
+В командной строке ОС перейдите в корневую папку проекта и   
+с помощью команды `composer require phpmailer/phpmailer` установите библиотеку PHPMailer.   
+После сохранения заказа, и если пользователь ввёл email, отправьте копию текста на его email.   
 Для этого используйте PHPMailer. 
 Обязательно оборачивайте вызовы методов PHPMailer в try .. catch. 
 Если возникла какая-либо ошибка при отправке сообщения — выведите соответствующее флеш-предупреждение в красном блоке (error).
@@ -111,16 +112,15 @@ https://debugmail.io/
     $mail = new PHPMailer();
     if (isset($_POST['email']) && !empty($_POST['email'])) {
         try {
-            //$mail->SMTPDebug = 4;
             $mail->CharSet = 'UTF-8';
-            $mail->setFrom('PavelAlexandrov86@yandex.ru');
-            $mail->addAddress('PavelAlexandrov86@yandex.ru');
+            $mail->setFrom('');
+            $mail->addAddress('u');
             $mail->isHTML(true);
             $mail->isSMTP();                                            //Send using SMTP
             $mail->Host       = 'smtp.yandex.ru';                     //Set the SMTP server to send through
             $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-            $mail->Username   = 'PavelAlexandrov86@yandex.ru';                     //SMTP username
-            $mail->Password   = 'PavelAlexandrov1234';
+            $mail->Username   = '';                     //SMTP username
+            $mail->Password   = '';
             $mail->Subject = 'Заявка с сайта: Telegraph.com';
             $mail->Port       = 465;
             $mail->SMTPSecure = 'ssl';            //Enable implicit TLS encryption
