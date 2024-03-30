@@ -110,7 +110,7 @@ Controller, Templates, Routers, Interfaces, Services, css, img, js
 composer require phpmailer/phpmailer
 ```
 Вы установили компонент PHPMailer, проверьте он должен появиться в папку `vendor`  
-2. Откройте временный ящик, например на `https://temp-mail.org/`  
+2. Откройте временный ящик, например на [https://temp-mail.org/](https://temp-mail.org/)  
 для получения почты на этот временный email  
 3. В классе `Order` укажите импортирование пространств имен используемых классов PHPMailer  
 ```
