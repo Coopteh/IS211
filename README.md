@@ -30,8 +30,7 @@
 имеет поле `$radius` и метод `area()`, который вычисляет площадь круга (3.14 * $this->radius * $this->radius)  
 
 **Создание модульного теста CircleTest**  
-В папке CircleTest.php
-
+В папке `Tests \ Unit` создайте файл `CircleTest.php`
 ```
 <?php 
 namespace App\Test\Unit;
@@ -46,4 +45,12 @@ class CircleTest extends TestCase {
         $this->assertEquals( 314, $obj->area());
     }
 }
+```
+метод `test_area()` создает класс Circle с радиусом = 10 и проверяет правильность расчета площади:  
+должно быть получено значение 314 (3.14 *10 *10) - эталонное значение (314) сравнивается с вычисляемым методом класса  
+
+**Запуск тестов**  
+Запустите модульные тесты из папки `Tests` выполнив в консоле:  
+```
+vendor/din/phpunit Test/
 ```
