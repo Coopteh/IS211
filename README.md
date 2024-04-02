@@ -34,7 +34,7 @@
 В папке `Tests \ Unit` создайте файл `CircleTest.php`
 ```
 <?php 
-namespace App\Test\Unit;
+namespace Test\Unit;
 
 use PHPUnit\Framework\TestCase;
 use Project\Circle;
