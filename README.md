@@ -1,13 +1,14 @@
 ### Задание 1. - Модульные тесты
 
-Необходимо.
+Необходимо настроить модульные тесты, научиться их писать и запускать.
 
-Откройте (либо создайте, если нет такой папки) php-is-211 
-cmd
-composer init
-composer require phpunit/phpunit
-Tests \ Unit
-composer.json
+Откройте (либо создайте, если нет такой папки) php-is-211   
+Запустите в ней (через Проводник, в адресной строке) консоль `cmd`  
+В консоле запустите  
+`composer init` - установка менеджера зависимостей  
+`composer require phpunit/phpunit` - установка компонента запуска модульных тестов phpunit  
+Создайте папку и подпапку в ней `Tests \ Unit`  
+Отредактируйте `composer.json`  
 ```
     "autoload": {
         "psr-4": {
@@ -20,12 +21,16 @@ composer.json
         }
     },
 ```
-composer install
-src/Circle
-radius
-area
+Запустите, чтобы изменения `composer.json` вступили в силу  
+`composer install`  
 
-CircleTest.php
+**Создание класса Circle**
+Создайте папку `src` и с ней файл `src/Circle.php`  
+Напишите класс Circle, который (в конструкторе) при создании принимает аргумент `radius`  
+имеет поле `$radius` и метод `area()`, который вычисляет площадь круга (3.14 * $this->radius * $this->radius)  
+
+**Создание модульного теста CircleTest**  
+В папке CircleTest.php
 
 ```
 <?php 
