@@ -52,5 +52,5 @@ class CircleTest extends TestCase {
 **Запуск тестов**  
 Запустите модульные тесты из папки `Tests` выполнив в консоле:  
 ```
-vendor/din/phpunit Test/
+vendor/bin/phpunit Test/
 ```
