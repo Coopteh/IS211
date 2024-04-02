@@ -8,13 +8,16 @@
 `composer init` - установка менеджера зависимостей (Enter  - прощелкайте предлагаемые варианты настроек)  
 `composer require phpunit/phpunit` - установка компонента запуска модульных тестов phpunit  
 Создайте папку и подпапку в ней `Tests \ Unit`  
-Отредактируйте `composer.json`  
+Отредактируйте `composer.json` измените секцию `autoload` на
 ```
     "autoload": {
         "psr-4": {
             "Project\\": "src/"
         }
     },
+```
+и добавьте еще одну секцию
+```
     "autoload-dev": {
         "psr-4": {
             "Test\\": "Test/"
