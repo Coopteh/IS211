@@ -6,6 +6,15 @@
 2. Создайте файл `PersonaName.php` внутри папки `src` c классом `PersonaName`  
 5. Создайте метод `firstUpper($name)` который формирует строку из первой заглавной и остальными строчными буквами  
 - используйте функцию [ucfirst](https://www.php.net/manual/ru/function.ucfirst.php)
+```
+    static function mb_ucfirst($string) {
+        $string = mb_strtoupper(mb_substr($string, 0, 1)) . mb_substr($string, 1);
+        return $string;
+    }
+    public function firstUpper($name) {
+        return PersonaName::mb_ucfirst($name);
+    }
+```
 6. Создайте тест `test_firstUpper` - в папке `Test` и подпапке `Unit` новый файл `PersonaNameTest.php` и соответствующий класс `PersonaNameTest`  
 Добавьте проверку:
 ```
