@@ -18,7 +18,7 @@
 6. Создайте тест `test_firstUpper` - в папке `Test` и подпапке `Unit` новый файл `PersonaNameTest.php` и соответствующий класс `PersonaNameTest`  
 Добавьте проверку:
 ```
-$obj = PersonaName();
+$obj = new PersonaName();
 $this->assertEquals( 'Иванов', $obj->firstUpper('иванов'));
 ```
 7. Запустите модульные тесты из папки `Tests` выполнив в консоле:  
@@ -39,7 +39,7 @@ $this->assertEquals( 'Иванов', $obj->firstUpper('ИВАНОВ'));
 4. Создайте новый тест `test_fio()` - в папке `Test` и подпапке `Unit` 
 Добавьте проверку:
 ```
-$obj2 = PersonaName('Иванов', 'Петр', 'Сергеевич');
+$obj2 = new PersonaName('Иванов', 'Петр', 'Сергеевич');
 $this->assertEquals( 'Иванов П.С.', $obj2->fio());
 ```
 
@@ -49,6 +49,6 @@ $this->assertEquals( 'Иванов П.С.', $obj2->fio());
 1. Измените метод `fio()` (используйте метод `firstUpper($name)` для преобразования) так, чтобы
 выполнялась новая проверка для теста `test_fio()`:
 ```
-$obj3 = PersonaName('иванов', 'пEТР', 'сергеевич');
+$obj3 = new PersonaName('иванов', 'пEТР', 'сергеевич');
 $this->assertEquals( 'Иванов П.С.', $obj3->fio());
 ```
