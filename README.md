@@ -6,7 +6,7 @@
 2. Создайте файл `PersonaName.php` внутри него класс `PersonaName`  
 5. Создайте метод `firstUpper($name)` который формирует строку из первой заглавной и остальными строчными буквами  
 - используйте функцию [ucfirst](https://www.php.net/manual/ru/function.ucfirst.php)
-6. Создайте тест `test_firstUpper` - в папке `Test \ Unit` новый файл `PersonaNameTest` и соответствующий класс `PersonaNameTest`  
+6. Создайте тест `test_firstUpper` - в папке `Test` и подпапке `Unit` новый файл `PersonaNameTest.php` и соответствующий класс `PersonaNameTest`  
 Добавьте проверку:
 ```
 $obj = PersonaName();
