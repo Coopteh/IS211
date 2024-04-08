@@ -6,9 +6,9 @@
 В новой базе создайте таблицу `Users` (пользователи) со следующими полями и типами данных соответственно:
 ```
 id — int auto increment;
-email — varchar;
-first_name (имя) — varchar; 
-last_name (фамилия) — varchar; 
+email — varchar(120);
+first_name (имя) — varchar(100); 
+last_name (фамилия) — varchar(100); 
 age (возраст) — int; 
 date_created (дата добавления) — datetime.
 ```
