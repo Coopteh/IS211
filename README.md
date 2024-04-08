@@ -19,6 +19,17 @@ date_created (дата добавления) — datetime.
 2. Установите в нем подключение к базе данных `mydb` средствами [PDO](https://www.php.net/manual/ru/book.pdo.php)  
 3. Добавьте 3 записи в таблицу `Users`
 4. Выполните скрипт `sql.php` через браузер `localhost/sql.php`
+```
+    $sql = "INSERT INTO user (email, first_name, last_name, age, date_created)
+    VALUES ('iTom@mail.ru', 'Тимофей', 'Иванов', 15, '2024-04-08')";
+     
+    $conn->exec($sql);
+    $conn->exec("INSERT INTO user (email, first_name, last_name, age, date_created)
+    VALUES ('iTom2@mail.ru', 'Тимофей2', 'Иванов', 16, '2024-04-08')");
+
+    $conn->exec("INSERT INTO user (email, first_name, last_name, age, date_created)
+    VALUES ('petr@mail.ru', 'Петр', 'Петров', 17, '2024-04-08')");
+```
 
 ### Задание 3. - Работа с SQL - просмотр данных
 
