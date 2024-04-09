@@ -86,3 +86,24 @@ $template =sprintf( getBaseTemplate(), $html );
         
         $html .= "</tr>";
 ```
+2. Обработаем данные формы, добавив после создания объекта PDO, следующий код:
+```
+    // Обработаем полученные данные - запрос на Изменение
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $id        = $_POST["id"];
+        $first_name= $_POST["first_name"];
+        $last_name = $_POST["last_name"];
+        $age       = $_POST["age"];
+        $email     = $_POST["email"];
+    
+        // Составим запрос
+        $sql = "UPDATE user SET 
+        email='{$email}', 
+        first_name='{$first_name}',
+        last_name='{$last_name}', 
+        age='{$age}'
+        WHERE id={$id}";
+    
+        $conn->exec($sql);
+    }
+```
