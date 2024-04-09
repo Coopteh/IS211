@@ -61,3 +61,28 @@ date_created (дата добавления) — datetime.
 $template =sprintf( getBaseTemplate(), $html );
 ```
 
+### Задание 5. - Форма ввода для изменения данных
+
+1. Добавим формы ввода для каждой записи в таблице
+```
+        // обработка строк
+        $html .= "<tr>";
+        // Добавим форму ввода
+        $html .= "<form method='POST'>";
+        // Добавим поля ввода
+        $html .= "<td>{$row['id']}
+          <input type='hidden' name='id' value='{$row['id']}'>
+        </td> 
+        <td>
+          <input type='text' name='first_name' value='{$row['first_name']}'>
+          <input type='text' name='last_name' value='{$row['last_name']}'>
+        </td>
+        <td><input type='text' name='age' value='{$row['age']}'></td>
+        <td><input type='text' name='email' value='{$row['email']}'></td>";
+        
+         // Добавим кнопку Изменить
+        $html .= "<td><button type='submit'>Изменить</button></td>";
+        $html .= "</form>";
+        
+        $html .= "</tr>";
+```
