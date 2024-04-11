@@ -146,3 +146,13 @@ $obj = new UserDbStorage();
 var_dump($obj->list());
 ```
 и запустите на выполнение в `VS Code` - в консоле должны отобразиться записи из БД
+7. Проверьте работу метода `insert`
+```
+// проверка добавления
+$_POST['email'] = "test@mail.ru";
+$_POST['first_name']= "Дмитрий";
+$_POST['last_name']= "Медведев";
+$_POST['age']= 50;
+$obj->insert();
+```
+- откройте в браузере `http://localhost/phpmyadmin` и проверьте добавилась ли запись?
