@@ -1,16 +1,28 @@
-### Задание 1. - Создание базы данных
+### Задание 1. - Создание базы данных проекта BurgerKrig
 
-Создайте новую пустую базу данных `mydb` в MySQL.  
-Для этого нужно воспользоваться phpMyAdmin (`localhost/phpmyadmin/`)  
-`Xampp \ Apache + mySql`  
-В новой базе создайте таблицу `Users` (пользователи) со следующими полями и типами данных соответственно:
+1. Создайте новую пустую базу данных `burgerkrig` в MySQL.  
+Для этого нужно воспользоваться phpMyAdmin (`localhost/phpmyadmin/`) включить `Xampp Control Panel \ Apache + mySql`  
+2. В новой базе создайте таблицу `product` (продукция) со следующими полями, типами данных и ограничениями:
 ```
-id — int auto increment;
-email — varchar(120);
-first_name (имя) — varchar(100); 
-last_name (фамилия) — varchar(100); 
-age (возраст) — int; 
-date_created (дата добавления) — datetime.
+id — int, auto_increment, primary_key
+name — varchar(120), not null, unique
+description — text
+image — varchar(100)
+weigth — float
+price — float, not null
+created — datetime
+updated — datetime
+```
+3. Cоздайте таблицу `order` (заказ) со следующими полями, типами данных и ограничениями:
+```
+id — int, auto_increment, primary_key
+name — varchar(120), not null, unique
+description — text
+image — varchar(100)
+weigth — float
+price — float, not null
+created — datetime
+updated — datetime
 ```
 
 ### Задание 2. - Работа с SQL - вставка данных
