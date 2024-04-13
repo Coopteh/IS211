@@ -22,7 +22,7 @@ phone — varchar(15)
 sum — float, not null
 created — datetime
 ```
-3. Cоздайте таблицу `order_item` (позиции заказа) со следующими полями, типами данных и ограничениями:
+4. Cоздайте таблицу `order_item` (позиции заказа) со следующими полями, типами данных и ограничениями:
 ```
 id — int, auto_increment, primary_key
 order_id — int, not null
