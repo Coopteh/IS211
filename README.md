@@ -66,3 +66,18 @@ class FileStorage implements FileStorageInterface
 ```
 2. Используя `sql.php` как образец напишите код, который обращается к базе данных и таблице `product`
 возвращая массив с данными
+3. Измените в `BurgerKrig\Controllers\Product.php`
+c
+```
+    public function getAll(): string
+    {
+        $objStorage = new FileStorage();
+        $products = $objStorage->loadData('data.json');
+```
+на
+```
+    public function getAll(): string
+    {
+        $objStorage = new ProductDBStorage();
+        $products = $objStorage->loadData('product');
+```
