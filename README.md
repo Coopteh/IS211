@@ -42,3 +42,27 @@ sum — float, not null
 из каталога продукции в браузере в таблицу `product`
 поле `image` заполните данными из `data.json`
 6. Наберите запрос на просмотр данных из таблицы `product` (SELECT)
+
+### Задание 3. Напишите класс ProductDBStorage
+
+1. В `C:\xampp\htdocs\BurgerKrig\Services` создайте файл `ProductDBStorage.php` следующего содержания
+```
+<?php
+namespace Services;
+
+use Interfaces\FileStorageInterface;
+
+class FileStorage implements FileStorageInterface
+{
+    public function saveData($nameFile, $arr)
+    {
+
+    }
+    public function loadData($nameFile): ?array
+    {
+
+    }
+}
+```
+2. Используя `sql.php` как образец напишите код, который обращается к базе данных и таблице `product`
+возвращая массив с данными
