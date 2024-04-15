@@ -33,11 +33,12 @@ sum — float, not null
 ```
 <hr>
 
-Задание 2. Заполнение данными таблицы product
+### Задание 2. Заполнение данными таблицы product
 
 1. Включите `Xampp Control Panel \ Apache + mySql`  
 2. Откройте в браузере `localhost` и страницу Каталога
 3. Откройте в VSCode `c:\xampp\htdocs` и файл `sql.php`
 4. Откройте phpMyAdmin (`localhost/phpmyadmin/`) и добавьте 3 запроса на вставку данных (INSERT INTO)
 из каталога продукции в браузере в таблицу `product`
-
+поле `image` заполните данными из `data.json`
+6. Наберите запрос на просмотр данных из таблицы `product` (SELECT)
