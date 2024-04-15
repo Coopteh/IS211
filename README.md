@@ -52,8 +52,9 @@ sum — float, not null
 namespace Services;
 
 use Interfaces\FileStorageInterface;
+use PDO;
 
-class FileStorage implements FileStorageInterface
+class ProductDBStorage implements FileStorageInterface
 {
     public function saveData($nameFile, $arr)
     {
