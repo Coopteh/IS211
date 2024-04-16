@@ -93,3 +93,4 @@ c
 и создает в ней новую запись с переданным заказом
 (реализуйте метод `public function saveData($nameFile, $arr)`)
 3. Измените метод сохранения с класса `FileStorage` на класс `OrderDBStorage` в `BurgerKrig\Controllers\Order.php`
+4. Добавьте новый метод `saveItems($arr)` в класс `OrderDBStorage`, который добавляет позиции заказа в таблицу `order_item`
