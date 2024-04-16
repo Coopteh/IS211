@@ -83,3 +83,13 @@ c
         $objStorage = new ProductDBStorage();
         $products = $objStorage->loadData('product');
 ```
+<hr>
+
+### Задание 4. Напишите класс OrderDBStorage
+
+1. В `C:\xampp\htdocs\BurgerKrig\Services` создайте файл `OrderDBStorage.php` с методами, 
+реализующими интерфейс `FileStorageInterface`
+2. Используя `sql.php` как образец напишите код, который обращается к базе данных и таблице `order`
+и создает в ней новую запись с переданным заказом
+(реализуйте метод `public function saveData($nameFile, $arr)`)
+3. Измените метод сохранения с класса `FileStorage` на класс `OrderDBStorage` в `BurgerKrig\Controllers\Order.php`
