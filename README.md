@@ -26,3 +26,7 @@ class CircleTest extends TestCase {
     }
 }
 ```
+Запустите модульные тесты из папки Tests выполнив в консоле:
+`vendor/bin/phpunit Tests/`
+Установка и настройка phpUnit - [по ссылке](https://github.com/Coopteh/IS211/tree/php-code-25-begin-unit-test)
+
