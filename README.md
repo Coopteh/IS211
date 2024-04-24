@@ -18,10 +18,10 @@
 namespace Test\Unit;
 
 use PHPUnit\Framework\TestCase;
-use Project\Circle;
+use Project\DiscountCard;
 
-class CircleTest extends TestCase {
-    public function test_area() {
+class TestDiscountCard extends TestCase {
+    public function test_boundary() {
 
     }
 }
