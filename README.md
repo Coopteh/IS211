@@ -20,7 +20,7 @@ namespace Test\Unit;
 use PHPUnit\Framework\TestCase;
 use Project\DiscountCard;
 
-class TestDiscountCard extends TestCase {
+class test_DiscountCard extends TestCase {
     public function test_boundary() {
 
     }
