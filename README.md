@@ -1,7 +1,7 @@
 ### Задание 1. - Тестирование API через Postman
 
 Скачайте программу установки `Postman` по [ссылке](https://www.postman.com/downloads/?utm_source=postman-home)  
-Установите программу
+Установите программу - логин: `v.milevskiy@coopteh.ru` пароль: `Rf,bytn409`
 
 1. Создайте `Test-211-Collection`
 2. Создайте новый запрос `Add request` с именем 'get-products' для урл `localhost\products`
