@@ -1,33 +1,13 @@
-### Задание 1. - Модульное тестирование граничных значений классов эквивалентности
+### Задание 1. - Тестирование API через Postman
 
-Откройте `Visual Studio Code` в ней папку `php-is-211`   
-и создайте в нем новый файл `DiscountCard.php` в подпапке `src`
-1. Напишите класс `DiscountCard` (скидочная карта) и метод `getPercent()` в нем, который:
-```
-Считает процент скидки
-0- до 1000 - 0%
-от 1000 (включительно) - до 3000 3%
-от 3000 (включительно) - 5000 5%
-от 5000 (включительно) 10%
-```
-2. Напишите модульный тест `test_DiscountCard.php` в подпапке `tests\Unit` для проверки граничных значений  
- * определите классы эквивалентности  
- * определите границы диапазонов  
- * создайте 3 теста для границ (на самой, +1 значение, -1 значение) для каждого класса эквивалентности 
-``` 
-<?php 
-namespace Test\Unit;
+Скачайте программу установки `Postman` по [ссылке](https://www.postman.com/downloads/?utm_source=postman-home)
+Установите программу
 
-use PHPUnit\Framework\TestCase;
-use Project\DiscountCard;
-
-class test_DiscountCard extends TestCase {
-    public function test_boundary() {
-
-    }
-}
-```
-Запустите модульные тесты из папки Tests выполнив в консоле:  
-`vendor/bin/phpunit Tests/Unit/`   
-Установка и настройка phpUnit - [по ссылке](https://github.com/Coopteh/IS211/tree/php-code-25-begin-unit-test)   
+1. Создайте `Test-211-Workspace`
+2. Создайте `Test-211-Collection` и внутри две папки `GET` и `POST`
+3. Создайте новый запрос `New \ Request` для урл `localhost\products`
+4. Запустите `Xampp Control Panel \ Apache` и запустите запрос на выполнение в `Postman`
+5. Найдите статус `200` и результаты ответа (`Responce`)
+6. Выключите `Xampp Control Panel \ Apache` и запустите запрос на выполнение в `Postman`
+7. Какой статус и результаты ответа (`Responce`) показывает программа тестирования API - Postman ?
 
