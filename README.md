@@ -1,11 +1,16 @@
 ### Задание 1. - Тестирование API через Postman
 
 Скачайте программу установки `Postman` по [ссылке](https://www.postman.com/downloads/?utm_source=postman-home)  
-Установите программу - логин: `v.milevskiy@coopteh.ru`
+Установите программу - логин: `v.milevskiy@coopteh.ru` (либо сами зарегайтесь)  
 
 1. Создайте `Test-211-Collection`
 2. Создайте новый запрос `Add request` с именем 'get-products' для урл `localhost\products`
 3. Запустите `Xampp Control Panel \ Apache` и запустите запрос на выполнение в `Postman`
 4. Найдите статус `200` и результаты ответа (`Responce`)
 5. Создайте новый запрос `Add request` с именем 'get-product-1' для урл `localhost\products\1` и запустите на выполнение
+<hr>
 
+### Задание 2. - тестирование POST-запроса
+
+1. Зайдите на ресурс [https://reqres.in/](https://reqres.in/) и скопируйте `Register - successful`
+2. Создайте POST-запрос с указанным url на выполнение в `Postman`
