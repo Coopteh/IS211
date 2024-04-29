@@ -14,7 +14,7 @@
 
 1. Создайте в `Postman` новую коллекцию `Reqres-Collection`
 2. Зайдите на ресурс [https://reqres.in/](https://reqres.in/) и скопируйте `Register - successful`
-3. Создайте POST-запрос с указанным url (параметры `raw`, `JSON`) и выполните его в `Postman`, сохраните запрос как `Registration`
+3. Создайте POST-запрос с указанным url (секция `Body` параметры `raw`, `JSON`) и выполните его в `Postman`, сохраните запрос как `Registration`
 4. Создайте GET-запрос с url из запроса `List users` (на указанном сайте) и выполните его в `Postman`, сохраните запрос как `List users`
 5. Выполните все тесты одной коллекции.
 6. Добавьте переменную (Variables) `url` для коллекции
