@@ -42,9 +42,32 @@
 - получает URL страницы сайта и выдает строку в виде подготовленной веб-страницы с html-кодом
 В папке `tests` создайте файл `RouterTest.php` с классом `RouterTest` следующего содержания:
 ```
+<?php 
+namespace Test;
 
+use PHPUnit\Framework\TestCase;
+use Routers\Router;
+
+class RouterTest extends TestCase {
+    public function test_router() {
+        $router = new Router();
+        $html = $router->route( "http://localhost/orders" );
+        $pos= mb_strpos($html, "Создание заказа");
+        $this->assertNotEquals(false, $pos);
+    }
+}
 ```
-Выполните тесты командой `vendor/bin/phpunit tests`
-Если тест выполняется успешно - зафиксируйте изменения и передайте на сервер командой `git push` (она ругнется, но предложит работающий вариант с --set-upstream, выполните его)  
+тест `test_router()` проверяет есть ли на странице, выдаваемой методом `route()` для урл `"http://localhost/orders"`, тест `Создание заказа`  
+Выполните тесты командой `vendor/bin/phpunit tests`  
+Если тест выполняется успешно - зафиксируйте изменения и передайте на сервер командой `git push`  
+(она ругнется, но предложит работающий вариант с --set-upstream, выполните его)  
 Убедитесь что на `https://github.com/Coopteh/BurgerKrig` появилась ваша новая ветка  
+<hr>
 
+**4. Самостоятельная работа**
+
+Добавьте еще пару проверок теста `RouterTest`:  
+- проверка главной страницы:
+```
+есть ли на странице, выдаваемой методом `route()` для урл `"http://localhost/orders"`, тест `Создание заказа`  
+```
