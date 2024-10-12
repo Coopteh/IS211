@@ -77,3 +77,42 @@ class RouterTest extends TestCase {
 ```
 есть ли на странице, выдаваемой методом route() для урл "http://localhost/products)", текст "Добавить в корзину"
 ```
+<hr>
+
+**5. Создание пайплайна**
+
+В корне сайта создайте папку `.github`, перейдите в нее и создайте еще подпапку `workflows` (должно получиться `.github/workflows`)  
+Перейдите в `.github/workflows` и создайте файл `deploy.yml`, добавив в него следующее содержание  
+```
+name: PHP_CI_BURGERKRIG
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+
+      - name: Install dependencies
+        run: composer install
+
+      - name: Run PHPUnit tests
+        run: ./vendor/bin/phpunit tests
+```
+Вы создали пайплайн для CI на GitHub Actions  
+зафиксируйте изменения и передайте на сервер командой `git push`   
+зайдите на страницу `Action` репозитория `https://github.com/Coopteh/BurgerKrig` и убедитесь, что пайплайн успешно выполнился и тесты пройдены.  
