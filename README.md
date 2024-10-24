@@ -5,5 +5,8 @@
 Меню "Список урожая" - отображает все записи таблицы  
 Меню "Добавить" - открывает форму добавление продукции и ее количества
 
+Используйте базовый проект [BasicWebProject](https://github.com/Coopteh/BasicWebProject)  
+Пункты меню - задавать в `BaseTemplate.php`  
+Создание таблиц базы данных и остальное - читайте [ReadMe проекта BasicWebProject](https://github.com/Coopteh/BasicWebProject)
 
 
