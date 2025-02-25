@@ -10,7 +10,7 @@ sudo apt install postgresql-contrib -y
 service postgresql status
 
 Зайдите под юзером postgres
-su -i -u postgres
+sudo -i -u postgres
 psql
 Выполните команды
 \l
