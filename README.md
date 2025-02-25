@@ -37,3 +37,4 @@ addres: 127.0.0.1
 user: postgres
 pass: qwerty
 ```
+Видео по теме [Установка PostgreSQL и pgAdmin4 на Linux Ubuntu](https://www.youtube.com/watch?v=kWUW3sMK0Mk)
