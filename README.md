@@ -15,6 +15,7 @@ psql
 Выполните команды
 \l
 \du
+ALTER USER postgres WITH PASSWORD 'qwerty';
 \q
 ```
 Установите графическую оболочку pgAdmin
@@ -28,4 +29,11 @@ sudo sh -c 'echo "deb [signed-by=/usr/share/keyrings/packages-pgadmin-org.gpg] h
 
 # Install for both desktop and web modes:
 sudo apt install pgadmin4 -y
+```
+Запустите pgAdmin и создайте новый сервер
+```
+name: localhost
+addres: 127.0.0.1
+user: postgres
+pass: qwerty
 ```
