@@ -38,3 +38,4 @@ user: postgres
 pass: qwerty
 ```
 Видео по теме [Установка PostgreSQL и pgAdmin4 на Linux Ubuntu](https://www.youtube.com/watch?v=kWUW3sMK0Mk)
+Видео по теме [Создание таблиц в PostgreSQL с помощью pgAdmin 4](https://www.youtube.com/watch?v=h5wgbJiSy7Q)
