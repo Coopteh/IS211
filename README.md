@@ -45,7 +45,7 @@ pass: qwerty
 ```
 В pgAdmin4 создайте базу данных: demo
 
-Для нее создайте 2 таблицы (Schema \ public\ Tables):
+Для нее создайте 2 таблицы (Schemas \ public\ Tables):
 goods, поля:
  product_id integer
  name text
@@ -62,5 +62,25 @@ categories, поля:
 
 Создание резервной копии и восстановление из терминала  
 ```
+# зайдите под пользователем postgres
+sudo -i -u postgres
 
+# создайте дамп базы данных demo
+pg_dump -U postgres -d demo > backup_pg.dump
+
+# удалите таблицы
+psql -d demo
+/dt - команда просмотра списка таблиц
+DROP TABLE goods
+DROP TABLE categories
+/dt
+/q - выход из оболочки
+
+# восстановитесь из резервной копии
+psql demo < backup_pg.dump
+
+# проверка
+psql -d demo
+/dt
+/q
 ```
