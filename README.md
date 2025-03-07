@@ -1,4 +1,4 @@
-# Задача
+# Задача 1
 Установка сервера PostgreSQL и графической оболочки pgAdmin  
 Загрузите виртуальную машину с Ubuntu и выполните команды
 ```
@@ -37,5 +37,30 @@ addres: 127.0.0.1
 user: postgres
 pass: qwerty
 ```
-Видео по теме [Установка PostgreSQL и pgAdmin4 на Linux Ubuntu](https://www.youtube.com/watch?v=kWUW3sMK0Mk)
+Видео по теме [Установка PostgreSQL и pgAdmin4 на Linux Ubuntu](https://www.youtube.com/watch?v=kWUW3sMK0Mk)   
 Видео по теме [Создание таблиц в PostgreSQL с помощью pgAdmin 4](https://www.youtube.com/watch?v=h5wgbJiSy7Q)
+
+# Задача 2 
+Работа с графической оболочкой pgAdmin 4   
+```
+В pgAdmin4 создайте базу данных: demo
+
+Для нее создайте 2 таблицы (Schema \ public\ Tables):
+goods, поля:
+ product_id integer
+ name text
+ category integer
+ price numeric
+categories, поля:
+ category_id integer
+ name text
+
+Резервирование - для базы данных demo вызовите контекстное меню и создайте резервную копию \Backup
+Удалите обе таблицы
+Восстановление - для базы данных demo вызовите контекстное меню и восстановитесь из резервной копии \Restore
+```
+
+Создание резервной копии и восстановление из терминала  
+```
+
+```
