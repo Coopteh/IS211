@@ -18,26 +18,26 @@
 пользователи - users  
 	к ним относятся (роли) преподаватели и студенты (2 роли)  
  ```
- iduser int PK+AI
- name VCH(100)
- role VCH(10)	- teacher, student
- pass VCH(100)
+ iduser int PRIMARY KEY AUTO_INCREMENT
+ login VARCHAR(100)
+ role VARCHAR(10)	- teacher, student
+ password VARCHAR(100)
  idgroup int - ид.группы для student
 ```
 группы - groups и студенты в них (препод просматривает студентов в группе)  
 ```
- idgroup int PK+AI 
- name VCH(100)
+ idgroup int PRIMARY KEY AUTO_INCREMENT
+ name VARCHAR(100)
 ```
 дисциплины (предмет) - subjects (студент смотрит оценки по дисциплинам)
 ```
- idsubject int PK+AI
- name VCH(100)
+ idsubject int PRIMARY KEY AUTO_INCREMENT
+ name VARCHAR(100)
  idteacher int  - ид.преподавателя предмета
 ```
 оценки - scores (препод доб-т, изм-т, удал-т)  
 ```
- idscore int PK+AI
+ idscore int PRIMARY KEY AUTO_INCREMENT
  iduser int (внешний ключ с таблицей users и полем iduser)
  idgroup int (внешний ключ с таблицей groups и полем idgroup)
  idsubject int (внешний ключ с таблицей subjects и полем idsubject)
