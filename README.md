@@ -38,6 +38,7 @@
 оценки - scores (препод доб-т, изм-т, удал-т)  
 ```
  idscore int PRIMARY KEY AUTO_INCREMENT
+ date_score DATE
  iduser int (внешний ключ с таблицей users и полем iduser)
  idgroup int (внешний ключ с таблицей groups и полем idgroup)
  idsubject int (внешний ключ с таблицей subjects и полем idsubject)
@@ -67,7 +68,14 @@
 2. добавить маршрут '/scores' в Router  
 3. добавить контроллер Score  
 4. добавить модуль ScoreDBStorage
-5. добавить представление ScoreTemplate
+
+# Занятие 4 (05-06-25) Просмотр дисциплин для преподавателя
+
+1. Создать меню "Дисциплины" (BaseTemplate, '/subjects')  
+2. добавить маршрут '/subjects' в Router  
+3. добавить контроллер Subjects  
+4. добавить модуль SubjectsDBStorage  
+6. добавить представление SubjectsTemplate  
 
 
 
